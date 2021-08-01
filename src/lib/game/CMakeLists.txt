@@ -1,5 +1,4 @@
 add_library(game "")
-set_target_properties(game PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
 # target_compile_definitions(game PRIVATE INET6=1)
 
 set(HEADER_PATH ${PROJECT_SOURCE_DIR}/include/game)
