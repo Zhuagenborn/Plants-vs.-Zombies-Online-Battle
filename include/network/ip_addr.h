@@ -5,7 +5,7 @@
  * @author Chen Zhenshuo (chenzs108@outlook.com)
  * @author Liu Guowen (liu.guowen@outlook.com)
  * @version 1.0
- * @date 2021-07-10
+ * @date 2021-08-01
  * @par GitHub
  * https://github.com/czs108
  * @par
@@ -59,6 +59,8 @@ public:
 
     static constexpr std::string_view LOOP_BACK{ "127.0.0.1" };
 
+    static constexpr std::string_view ANY{ "0.0.0.0" };
+
     using RawType = sockaddr_in;
 
     explicit Ipv4Addr(const sockaddr_in& addr) noexcept;
@@ -84,6 +86,8 @@ public:
     static constexpr int VERSION = AF_INET6;
 
     static constexpr std::string_view LOOP_BACK{ "::1" };
+
+    static constexpr std::string_view ANY{ "::" };
 
     using RawType = sockaddr_in6;
 

@@ -7,10 +7,6 @@ namespace game {
 
 namespace cfg {
 
-const std::map<std::string_view, std::int32_t> plant_ids{};
-
-const std::map<std::string_view, std::int32_t> zombie_ids{};
-
 const Slots Player::default_zombies{ 0, 1, 2, 3, 4, 5, 6, 7, 8 };
 
 const Slots Player::default_plants{ 0, 1, 2, 3, 4, 5, 6, 7, 8 };

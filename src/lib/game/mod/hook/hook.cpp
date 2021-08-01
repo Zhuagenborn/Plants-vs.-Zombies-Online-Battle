@@ -81,9 +81,9 @@ void __stdcall BeforeLoadLevel::Callback() noexcept {
 
             std::string_view ip{};
             if (typeid(cfg::IpAddr) == typeid(net::Ipv4Addr)) {
-                ip = net::Ipv4Addr::LOOP_BACK;
+                ip = net::Ipv4Addr::ANY;
             } else if (typeid(cfg::IpAddr) == typeid(net::Ipv6Addr)) {
-                ip = net::Ipv6Addr::LOOP_BACK;
+                ip = net::Ipv6Addr::ANY;
             } else {
                 assert(false);
                 std::abort();
@@ -243,7 +243,7 @@ __declspec(naked) void __stdcall InitSlots::Detour() noexcept {
         popad
         push    -1
         push    0x0064EA08
-            // jmp
+        // jmp
         nop
         nop
         nop

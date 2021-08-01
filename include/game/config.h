@@ -40,12 +40,6 @@ namespace cfg {
 //! Slots.
 using Slots = std::array<std::int32_t, SLOT_NUM>;
 
-//! Plant IDs.
-extern const std::map<std::string_view, std::int32_t> plant_ids;
-
-//! Zombie IDs.
-extern const std::map<std::string_view, std::int32_t> zombie_ids;
-
 /**
  * @brief Player-related configurations.
  */
