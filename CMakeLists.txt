@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20.0)
-
+cmake_policy(SET CMP0091 NEW)
 project(Plants-vs-Zombies-Online-Battle LANGUAGES CXX)
 
 if((NOT CMAKE_SYSTEM_NAME STREQUAL "Windows") OR (NOT CMAKE_SIZEOF_VOID_P EQUAL 4))

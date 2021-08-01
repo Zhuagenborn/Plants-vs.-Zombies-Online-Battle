@@ -1,4 +1,5 @@
 add_library(network "")
+set_target_properties(network PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
 
 set(HEADER_PATH ${PROJECT_SOURCE_DIR}/include/network)
 target_include_directories(network PUBLIC ${HEADER_PATH})
