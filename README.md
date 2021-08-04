@@ -6,6 +6,7 @@
 [![Visual-Studio](docs/badges/Made-with-Visual-Studio.svg)](https://visualstudio.microsoft.com/)
 [![Windows](docs/badges/Microsoft-Windows.svg)](https://www.microsoft.com/en-ie/windows)
 ![License](docs/badges/License-MIT.svg)
+[![DOI](https://zenodo.org/badge/294864064.svg)](https://zenodo.org/badge/latestdoi/294864064)
 
 > This project has two original repositories:
 >
