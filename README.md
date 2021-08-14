@@ -29,12 +29,12 @@ This project adds the multiplayer battle to ***Plants vs. Zombies*** via reverse
 
 ### Building
 
-Open *x86 Native Tools Command Prompt* provided by *Visual Studio 2022* and set the location to the project folder.
+Set the location to the project folder and run:
 
 ```bash
 mkdir -p build
 cd build
-cmake ..
+cmake .. -G "Visual Studio 17 2022" -A Win32
 cmake --build .
 ```
 
