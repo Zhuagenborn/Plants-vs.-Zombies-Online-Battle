@@ -1,6 +1,6 @@
 /**
  * @file dllmain.cpp
- * @brief The `DllMain` of the plant side.
+ * @brief The `DllMain` of the zombie side.
  *
  * @author Chen Zhenshuo (chenzs108@outlook.com)
  * @author Liu Guowen (liu.guowen@outlook.com)
@@ -14,8 +14,8 @@
 
 #define _WINSOCKAPI_
 
-#include "config.h"
-#include "startup.h"
+#include "game/config.h"
+#include "game/startup.h"
 
 #include <Windows.h>
 
@@ -30,7 +30,7 @@ using namespace game;
 
 namespace {
 
-constexpr std::string_view CFG_FILE = "online_config.ini";
+constexpr std::string_view CFG_FILE{ "online_config.ini" };
 
 extern std::unique_ptr<Startup> startup;
 
@@ -42,7 +42,7 @@ BOOL APIENTRY DllMain(HMODULE, const DWORD reason, LPVOID) {
         switch (reason) {
             case DLL_PROCESS_ATTACH: {
                 startup = std::make_unique<Startup>(
-                    Role::Plant,
+                    Role::Zombie,
                     Config{ std::filesystem::absolute(CFG_FILE).string() });
                 startup->Run();
                 break;

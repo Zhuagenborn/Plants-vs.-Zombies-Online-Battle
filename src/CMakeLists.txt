@@ -1,3 +1,3 @@
-add_subdirectory(lib)
-add_subdirectory(plant)
-add_subdirectory(zombie)
+add_subdirectory(game)
+add_subdirectory(network)
+add_subdirectory(system)

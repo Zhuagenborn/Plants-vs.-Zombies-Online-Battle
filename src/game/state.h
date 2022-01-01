@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-#include "socket/tcp.h"
+#include "network/socket/tcp.h"
 
 #include <memory>
 #include <thread>

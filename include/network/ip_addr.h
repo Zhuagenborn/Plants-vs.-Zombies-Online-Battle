@@ -55,7 +55,7 @@ private:
  */
 class Ipv4Addr final : public IpAddr {
 public:
-    static constexpr int VERSION = AF_INET;
+    static constexpr int VERSION{ AF_INET };
 
     static constexpr std::string_view LOOP_BACK{ "127.0.0.1" };
 
@@ -83,7 +83,7 @@ private:
  */
 class Ipv6Addr final : public IpAddr {
 public:
-    static constexpr int VERSION = AF_INET6;
+    static constexpr int VERSION{ AF_INET6 };
 
     static constexpr std::string_view LOOP_BACK{ "::1" };
 

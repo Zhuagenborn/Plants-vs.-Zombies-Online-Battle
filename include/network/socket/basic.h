@@ -16,9 +16,9 @@
 
 #define _WINSOCKAPI_
 
-#include "ip_addr.h"
+#include "network/ip_addr.h"
 
-#include "windows_error.h"
+#include "system/windows_error.h"
 
 #include <winsock2.h>
 

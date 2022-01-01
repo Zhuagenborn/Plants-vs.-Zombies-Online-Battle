@@ -16,9 +16,9 @@
 
 #define _WINSOCKAPI_
 
-#include "socket/basic.h"
+#include "basic.h"
 
-#include "windows_error.h"
+#include "system/windows_error.h"
 
 #include <cstddef>
 #include <span>

@@ -9,8 +9,7 @@
 .EXAMPLE
     PS> .\Startup.ps1 -Role 'Plant'
 .LINK
-    https://github.com/czs108/Plants-vs.-Zombies-Online-Battle
-    https://github.com/lgw1995/Plants-vs.-Zombies-Online-Battle
+    https://github.com/Zhuagenborn/Plants-vs.-Zombies-Online-Battle
 .NOTES
     Author: Chen Zhenshuo
     GitHub: https://github.com/czs108

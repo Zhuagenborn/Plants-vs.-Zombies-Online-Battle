@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-#include "packet.h"
+#include "network/packet.h"
 
 #include <cstdint>
 #include <thread>

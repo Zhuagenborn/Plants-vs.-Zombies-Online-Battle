@@ -17,6 +17,8 @@
 #include <cstddef>
 #include <cstdint>
 #include <string_view>
+#include <list>
+#include <memory>
 
 
 namespace game {
@@ -41,6 +43,36 @@ public:
 
 
 namespace mod {
+
+/**
+ * @brief The modification loader.
+ */
+class Loader final {
+public:
+    /**
+     * @brief Register a modification.
+     *
+     * @param mod   A modification.
+     * @return The current loader.
+     */
+    Loader& Add(std::unique_ptr<Mod> mod);
+
+    //! Load registered modifications.
+    void Load();
+
+private:
+    /**
+     * @brief Check whether a modification has been registered twice.
+     *
+     * @param mod   A modification.
+     *
+     * @exception std::invalid_argument The modification has been registered before.
+     */
+    void CheckDuplicate(const Mod& mod) const;
+
+    std::list<std::unique_ptr<Mod>> mods_{};
+};
+
 
 //! The base number of zombie IDs.
 constexpr std::int32_t ZOMBIE_ID_BASE{ 0x3C };

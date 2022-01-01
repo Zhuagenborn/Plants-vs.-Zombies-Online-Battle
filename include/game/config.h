@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "ip_addr.h"
+#include "network/ip_addr.h"
 
 #include <array>
 #include <cstddef>

@@ -1,6 +1,5 @@
 #include "startup.h"
 #include "mod/hook/hook.h"
-#include "mod/loader.h"
 #include "mod/mod.h"
 #include "state.h"
 
