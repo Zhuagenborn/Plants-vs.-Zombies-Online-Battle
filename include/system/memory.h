@@ -24,33 +24,33 @@
 
 namespace sys {
 
-//! The operation code of long `jmp` instruction.
+//! The operation code of long @p jmp instruction.
 constexpr std::byte JMP{ std::byte{ 0xE9 } };
 
-//! The operation code of short `jmp` instruction.
+//! The operation code of short @p jmp instruction.
 constexpr std::byte SHORT_JMP{ std::byte{ 0xEB } };
 
-//! The operation code of `call` instruction.
+//! The operation code of @p call instruction.
 constexpr std::byte CALL{ std::byte{ 0xE8 } };
 
-//! The operation code of `ret` instruction.
+//! The operation code of @p ret instruction.
 constexpr std::byte RET{ std::byte{ 0xC3 } };
 
-//! The operation code of `nop` instruction.
+//! The operation code of @p nop instruction.
 constexpr std::byte NOP{ std::byte{ 0x90 } };
 
-//! The length of long `jmp` instruction.
+//! The length of long @p jmp instruction.
 constexpr std::size_t JMP_LEN{ 5 };
 
-//! The length of `call` instruction.
+//! The length of @p call instruction.
 constexpr std::size_t CALL_LEN{ JMP_LEN };
 
 /**
- * @brief Check if an address is `nullptr`.
+ * @brief Check if an address is @p nullptr.
  *
  * @param addr  An address.
  *
- * @exception std::invalid_argument The address is `nullptr`.
+ * @exception std::invalid_argument The address is @p nullptr.
  */
 void CheckNullPointer(const std::intptr_t addr);
 
@@ -60,7 +60,7 @@ void CheckNullPointer(const std::intptr_t addr);
  * @param addr  A base address.
  * @param size  The size.
  *
- * @exception WindowsError  The operation failed.
+ * @exception std::system_error The operation failed.
  */
 void SetMemoryWritable(const std::intptr_t addr, const std::size_t size);
 
@@ -78,7 +78,7 @@ void AlterMemory(const std::intptr_t addr,
                  const std::span<std::byte> origin_bytes);
 
 /**
- * @brief Format a long `jmp` instruction.
+ * @brief Format a long @p jmp instruction.
  *
  * @param from  The source address.
  * @param to    The destination address.
@@ -89,7 +89,7 @@ std::array<std::byte, JMP_LEN> FormatJmpBytes(const std::intptr_t from,
 
 /**
  * @brief Get the true entry address of a function.
- * @details Some compilers will generate a <em>Jump Thunk</em> for each function, using `&` operator can only get the address of the thunk.
+ * @details Some compilers will generate a <em>Jump Thunk</em> for each function, using @p & operator can only get the address of the thunk.
  */
 std::intptr_t GetFuncEntryAddr(const std::intptr_t addr) noexcept;
 

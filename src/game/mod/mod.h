@@ -68,7 +68,7 @@ public:
     /**
      * @brief Modify the game file to allow to run multiple processes simultaneously.
      *
-     * @param file_path The path of `PlantsVsZombies.exe`.
+     * @param file_path The path of @p PlantsVsZombies.exe.
      *
      * @exception std::invalid_argument The path is empty.
      */

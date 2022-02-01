@@ -1,4 +1,4 @@
-add_library(network "")
+add_library(network)
 
 set(HEADER_PATH ${PROJECT_SOURCE_DIR}/include/network)
 target_include_directories(network PRIVATE ${HEADER_PATH})

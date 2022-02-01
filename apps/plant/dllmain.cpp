@@ -1,6 +1,6 @@
 /**
  * @file dllmain.cpp
- * @brief The `DllMain` of the plant side.
+ * @brief The @p DllMain of the plant side.
  *
  * @author Chen Zhenshuo (chenzs108@outlook.com)
  * @author Liu Guowen (liu.guowen@outlook.com)

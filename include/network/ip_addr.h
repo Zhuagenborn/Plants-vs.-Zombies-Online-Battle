@@ -110,7 +110,7 @@ private:
  * @concept ValidIpAddr
  * @brief A valid IP address.
  *
- * @tparam T    `Ipv4Addr` or `Ipv6Addr`.
+ * @tparam T    @p Ipv4Addr or @p Ipv6Addr.
  */
 template <typename T>
 concept ValidIpAddr =

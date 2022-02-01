@@ -1,4 +1,4 @@
-add_library(system "")
+add_library(system)
 
 set(HEADER_PATH ${PROJECT_SOURCE_DIR}/include/system)
 target_include_directories(system PRIVATE ${HEADER_PATH})

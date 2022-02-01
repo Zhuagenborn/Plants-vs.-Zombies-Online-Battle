@@ -51,7 +51,7 @@ protected:
         //! The machine code for hook.
         std::vector<std::byte> code;
 
-        //! The data offset of the jump offset to the destination in `code` array.
+        //! The data offset of the jump offset to the destination in @p code array.
         std::size_t jmp_offset_pos;
 
         //! The length of the jump instruction.

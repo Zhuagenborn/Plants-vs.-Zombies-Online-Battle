@@ -1,4 +1,4 @@
-add_library(game "")
+add_library(game)
 # target_compile_definitions(game PRIVATE INET6=1)
 
 set(HEADER_PATH ${PROJECT_SOURCE_DIR}/include/game)

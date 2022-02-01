@@ -39,14 +39,14 @@ public:
      *
      * @param addr  An IP address.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     void Bind(const ADDR& addr);
 
     /**
      * @brief Start to listen.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     void Listen();
 
@@ -58,7 +58,7 @@ public:
     /**
      * @brief Accept a connection.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     TcpSocket<ADDR> Accept();
 

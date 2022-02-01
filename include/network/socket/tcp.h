@@ -39,7 +39,7 @@ public:
     /**
      * @brief Construct a TCP socket.
      *
-     * @exception sys::WindowsError The initialization failed.
+     * @exception std::system_error The initialization failed.
      */
     TcpSocket();
 
@@ -48,14 +48,14 @@ public:
      *
      * @param addr  An IP address.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     void Connect(const ADDR& addr) const;
 
     /**
      * @brief Send data.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     std::size_t Send(const std::span<const std::byte> data) const;
 
@@ -64,7 +64,7 @@ public:
      *
      * @param buffer    A buffer storing data. The function tries to fill this buffer.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     std::size_t Recv(const std::span<std::byte> buffer) const;
 };

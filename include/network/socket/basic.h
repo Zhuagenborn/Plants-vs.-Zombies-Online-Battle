@@ -85,9 +85,9 @@ public:
     void SetAddr(const ADDR& addr) noexcept;
 
     /**
-     * @brief Bind the IP address set by `SetAddr` to the socket.
+     * @brief Bind the IP address set by @p SetAddr to the socket.
      *
-     * @exception sys::WindowsError The operation failed.
+     * @exception std::system_error The operation failed.
      */
     void Bind() const;
 

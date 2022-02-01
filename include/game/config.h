@@ -91,7 +91,7 @@ public:
     Network() noexcept;
 
     /**
-     * @brief Load configurations from an `.ini` file.
+     * @brief Load configurations from an @p .ini file.
      *
      * @param file  A file path.
      */
@@ -104,13 +104,13 @@ public:
     std::uint16_t Port() const noexcept;
 
 private:
-    //! The section name of network configurations in the `.ini` file.
+    //! The section name of network configurations in the @p .ini file.
     static constexpr std::string_view INI_SECTION{ "Network" };
 
-    //! The key name of the server IP address in the `.ini` file.
+    //! The key name of the server IP address in the @p .ini file.
     static constexpr std::string_view IP_INI_KEY{ "ServerIP" };
 
-    //! The key name of the port number in the `.ini` file.
+    //! The key name of the port number in the @p .ini file.
     static constexpr std::string_view PORT_INI_KEY{ "Port" };
 
     std::string server_ip_{ default_server_ip };
@@ -128,7 +128,7 @@ public:
     Config() noexcept;
 
     /**
-     * @brief Load configurations from an `.ini` file.
+     * @brief Load configurations from an @p .ini file.
      *
      * @param file  A file path.
      */

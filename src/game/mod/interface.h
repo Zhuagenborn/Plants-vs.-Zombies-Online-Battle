@@ -81,39 +81,39 @@ constexpr std::int32_t ZOMBIE_ID_BASE{ 0x3C };
  * @brief The global base address.
  *
  * @warning
- * This value cannot be defined using `constexpr`.
- * When referring to it in a naked function defined using `__declspec(naked)`,
- * a `constexpr` variable cannot be converted into a constant number as normal.
+ * This value cannot be defined using @p constexpr.
+ * When referring to it in a naked function defined using @p __declspec(naked),
+ * a @p constexpr variable cannot be converted into a constant number as normal.
  */
 #define BASE_ADDR 0x006A9F38
 
 /**
- * @brief The address of `CreateZombie` function.
+ * @brief The address of @p CreateZombie function.
  *
  * @warning
- * This value cannot be defined using `constexpr`.
- * When referring to it in a naked function defined using `__declspec(naked)`,
- * a `constexpr` variable cannot be converted into a constant number as normal.
+ * This value cannot be defined using @p constexpr.
+ * When referring to it in a naked function defined using @p __declspec(naked),
+ * a @p constexpr variable cannot be converted into a constant number as normal.
  */
 #define FUNC_CREATE_ZOMBIE_ADDR 0x0042A0F0
 
 /**
- * @brief The address of `CreatePlant` function.
+ * @brief The address of @p CreatePlant function.
  *
  * @warning
- * This value cannot be defined using `constexpr`.
- * When referring to it in a naked function defined using `__declspec(naked)`,
- * a `constexpr` variable cannot be converted into a constant number as normal.
+ * This value cannot be defined using @p constexpr.
+ * When referring to it in a naked function defined using @p __declspec(naked),
+ * a @p constexpr variable cannot be converted into a constant number as normal.
  */
 #define FUNC_CREATE_PLANT_ADDR 0x0040D120
 
 /**
- * @brief The address of `EndLevel` function.
+ * @brief The address of @p EndLevel function.
  *
  * @warning
- * This value cannot be defined using `constexpr`.
- * When referring to it in a naked function defined using `__declspec(naked)`,
- * a `constexpr` variable cannot be converted into a constant number as normal.
+ * This value cannot be defined using @p constexpr.
+ * When referring to it in a naked function defined using @p __declspec(naked),
+ * a @p constexpr variable cannot be converted into a constant number as normal.
  */
 #define FUNC_END_LEVEL_ADDR 0x00413400
 
@@ -121,18 +121,18 @@ constexpr std::int32_t ZOMBIE_ID_BASE{ 0x3C };
  * @brief The ID of the online level.
  *
  * @warning
- * This value cannot be defined using `constexpr`.
- * When referring to it in a naked function defined using `__declspec(naked)`,
- * a `constexpr` variable cannot be converted into a constant number as normal.
+ * This value cannot be defined using @p constexpr.
+ * When referring to it in a naked function defined using @p __declspec(naked),
+ * a @p constexpr variable cannot be converted into a constant number as normal.
  */
 #define MOD_LEVEL_ID 0x46
 
 /**
  * @brief The slot.
  * @details
- * Set a breakpoint at `0x004897B2`.
+ * Set a breakpoint at @p 0x004897B2.
  * Each time the game is interrupted while loading a new level,
- * the 4-bit content of `[ESP]` will be the address of the slot structure that the game is displaying currently.
+ * the 4-bit content of @p [ESP] will be the address of the slot structure that the game is displaying currently.
  */
 struct Slot {
     std::byte unknown1[8];
@@ -156,7 +156,7 @@ struct Slot {
     /**
      * @brief The item ID.
      * @details
-     * If the type of the slot is zombie, this field is equal to the zombie ID plus `ZOMBIE_ID_BASE`.
+     * If the type of the slot is zombie, this field is equal to the zombie ID plus @p ZOMBIE_ID_BASE.
      * If the type of the slot is plant, this field is equal to the plant ID.
      *
      * @par Offset
@@ -173,7 +173,7 @@ struct PlantedPlant {
 
     /**
      * @brief If the plant is invalid.
-     * @details If this field is `true`, the plant will be removed.
+     * @details If this field is @p true, the plant will be removed.
      *
      * @par Offset
      * 0x141
