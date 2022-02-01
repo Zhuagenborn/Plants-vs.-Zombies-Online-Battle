@@ -21,11 +21,6 @@
  *
  * This project adds the multiplayer battle to ***Plants vs. Zombies*** via reverse engineering, inline hook and dynamic-link library injection. Two online players can defend and attack as *Plant* and *Zombie* respectively.
  *
- * > It has two original repositories:
- * >
- * > - https://github.com/czs108/Plants-vs.-Zombies-Online-Battle
- * > - https://github.com/lgw1995/Plants-vs.-Zombies-Online-Battle
- *
  * @section getting-started Getting Started
  *
  * @subsection prerequisites Prerequisites
@@ -49,7 +44,7 @@
  *
  * @subsubsection ipv6 IPv6
  *
- * The default IP version is *IPv4*. Enable the following statement in `src/lib/game/CMakeLists.txt` if you want to build *IPv6* libraries.
+ * The default *IP* version is *IPv4*. Enable the following statement in `libs/game/CMakeLists.txt` if you want to build *IPv6* libraries.
  *
  * ```cmake
  * target_compile_definitions(game PRIVATE INET6=1)
@@ -61,7 +56,7 @@
  * >
  * > The *MD5* of `PlantsVsZombies.exe` is `37B729B4056131722A556E646AC915E9`.
  *
- * In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/czs108/Dll-Injector).
+ * In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/Zhuagenborn/Dll-Injector).
  *
  * @subsection playing-as-plant Playing as Plant
  *
@@ -114,6 +109,8 @@
  * The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specification.
  *
  * `docs/Key Data and Functions.md` describes key data and functions obtained by reverse engineering.
+ *
+ * The class diagram is created by [*PlantUML*](https://plantuml.com). See `docs/class-diagram.plantuml` for more details.
  *
  * @section issues-bugs Issues & Bugs
  *

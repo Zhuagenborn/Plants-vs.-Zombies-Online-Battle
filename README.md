@@ -8,11 +8,6 @@
 ![License](docs/badges/License-MIT.svg)
 [![DOI](https://zenodo.org/badge/294864064.svg)](https://zenodo.org/badge/latestdoi/294864064)
 
-> This project has two original repositories:
->
-> - https://github.com/czs108/Plants-vs.-Zombies-Online-Battle
-> - https://github.com/lgw1995/Plants-vs.-Zombies-Online-Battle
-
 ## Introduction
 
 ![Cover](Cover.jpg)
@@ -42,7 +37,7 @@ Two dynamic-link libraries `plant.dll` and `zombie.dll` will be generated in `bu
 
 #### IPv6
 
-The default IP version is *IPv4*. Enable the following statement in `src/lib/game/CMakeLists.txt` if you want to build *IPv6* libraries.
+The default *IP* version is *IPv4*. Enable the following statement in `libs/game/CMakeLists.txt` if you want to build *IPv6* libraries.
 
 ```cmake
 target_compile_definitions(game PRIVATE INET6=1)
@@ -54,7 +49,7 @@ target_compile_definitions(game PRIVATE INET6=1)
 >
 > The *MD5* of `PlantsVsZombies.exe` is `37B729B4056131722A556E646AC915E9`.
 
-In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/czs108/Dll-Injector).
+In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/Zhuagenborn/Dll-Injector).
 
 ![online-battle](docs/images/online-battle.gif)
 
@@ -126,6 +121,10 @@ The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specificat
 
 `docs/Key Data and Functions.md` describes key data and functions obtained by reverse engineering.
 
+The class diagram is created by [*PlantUML*](https://plantuml.com). See `docs/class-diagram.plantuml` for more details.
+
+![class-diagram](docs/class-diagram.png)
+
 ## Issues & Bugs
 
 - The game sometimes crashes when creating zombies.
@@ -135,6 +134,21 @@ The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specificat
 ## License
 
 Distributed under the *MIT License*. See `LICENSE` for more information.
+
+## Citing
+
+```tex
+@software{chenzs108_2021_5159165,
+  author       = {Chen Zhenshuo and Liu Guowen},
+  title        = {Zhuagenborn/Plants-vs.-Zombies-Online-Battle: v1.0.0},
+  month        = aug,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.5159165},
+  url          = {https://doi.org/10.5281/zenodo.5159165}
+}
+```
 
 ## Contact
 

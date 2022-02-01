@@ -1,0 +1,162 @@
+@startuml Plants-vs.-Zombies-Online-Battle
+
+namespace cfg {
+
+    class Player
+    class Network
+    class Config
+
+    Config --> Player
+    Config --> Network
+}
+
+enum Role {
+    Plante
+    Zombie
+}
+
+cfg.Player --> Role
+
+class State
+State --> cfg.Config
+State --> net.TcpSocket
+
+namespace net {
+
+    interface IpAddr {
+        Version() : int
+        Size() : size_t
+        Raw() : sockaddr
+    }
+
+    class Ipv4Addr
+    IpAddr <|.. Ipv4Addr
+
+    class Ipv6Addr
+    IpAddr <|.. Ipv6Addr
+
+    abstract Socket<ADDR> {
+        Addr() : ADDR
+        SetAddr(addr: ADDR)
+        Bind()
+        Close()
+    }
+
+    Socket --> IpAddr
+
+    class TcpSocket<ADDR> {
+        Connect(addr: ADDR)
+        Send(data: span<byte>) : size_t
+        Recv(buffer: span<byte>) : size_t
+    }
+
+    Socket <|.. TcpSocket
+
+    class Listener<ADDR> {
+        Bind(addr: ADDR)
+        Listen()
+        Accept() : TcpSocket<ADDR>
+        Close()
+    }
+
+    Listener --> TcpSocket
+
+    class Packet<ADDR> {
+        {static} Recv(socket: TcpSocket<ADDR>) : Packet
+        Send(socket: TcpSocket<ADDR>)
+        Write(data: span<byte>) : size_t
+        Read() : span<byte>
+    }
+
+    Packet ..> TcpSocket
+}
+
+namespace mod {
+
+    interface Mod {
+        Enable()
+        Disable()
+    }
+
+    class Loader {
+        Add(mod: Mod)
+        Load()
+    }
+
+    Loader o-- Mod
+
+    class SetSunAmount
+    Mod <|.. SetSunAmount
+
+    class DisableAutoPause
+    Mod <|.. DisableAutoPause
+
+    class RemoveDefaultPlants
+    Mod <|.. RemoveDefaultPlants
+
+    class AllowMultiProcess {
+        Enable(file_path: string)
+    }
+
+    Mod <|.. AllowMultiProcess
+
+    namespace hook {
+
+        interface Hook {
+            #HookBytes() : vector<byte>
+            #From() : intptr_t
+            #To() : intptr_t
+            #JumpRet() : optional<intptr_t>
+        }
+
+        mod.Mod <|-- Hook
+
+        class BeforeLoadLevel
+        Hook <|.. BeforeLoadLevel
+        BeforeLoadLevel ..> mod.DisableAutoPause
+        BeforeLoadLevel ..> DisableRuntimeMenu
+        BeforeLoadLevel ..> CreateZombie
+        BeforeLoadLevel ..> CreatePlant
+        BeforeLoadLevel ..> LevelEnd
+        BeforeLoadLevel ..> net.Listener
+        BeforeLoadLevel ..> .State
+
+        class AfterLoadLevel
+        Hook <|.. AfterLoadLevel
+        AfterLoadLevel ..> mod.SetSunAmount
+        AfterLoadLevel ..> mod.RemoveDefaultPlants
+        AfterLoadLevel ..> InitSlots
+
+        class DisableRuntimeMenu
+        Hook <|.. DisableRuntimeMenu
+
+        class InitSlots
+        Hook <|.. InitSlots
+        InitSlots ..> .State
+
+        class LevelEnd
+        Hook <|.. LevelEnd
+        LevelEnd ..> .State
+        LevelEnd ..> net.Packet
+
+        class CreateZombie
+        Hook <|.. CreateZombie
+        CreateZombie ..> .State
+        CreateZombie ..> net.Packet
+
+        class CreatePlant
+        Hook <|.. CreatePlant
+        CreatePlant ..> .State
+        CreatePlant ..> net.Packet
+    }
+}
+
+class Startup {
+    Run()
+    Stop()
+}
+
+Startup --> mod.Loader
+Startup --> State
+
+@enduml

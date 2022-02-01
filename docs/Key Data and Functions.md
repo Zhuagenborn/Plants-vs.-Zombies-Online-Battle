@@ -1,6 +1,10 @@
 # Key Data and Functions
 
-All information can be obtained through reverse engineering.
+All information can be obtained through reverse engineering using the following tools:
+
+- [*Cheat Engine*](https://www.cheatengine.org): An open-source memory scanner.
+- [*IDA Pro*](https://hex-rays.com/ida-pro): A powerful disassembler and versatile debugger.
+- [x64dbg](https://x64dbg.com): An open-source binary debugger for *Windows*.
 
 ## Warning
 
@@ -175,7 +179,7 @@ struct Slot {
 
       /**
        * @brief If the plant is invalid.
-       * @details If this field is `true`, the plant will be removed.
+       * @details If this field is @p true, the plant will be removed.
        *
        * @par Offset
        * 0x141
@@ -197,7 +201,7 @@ struct Slot {
    * @brief Start a level.
    *
    * @param level_id  A level ID.
-   * @param reset     It's `true` when starting a new level, `false` when loading the last progress.
+   * @param reset     It's @p true when starting a new level, @p false when loading the last progress.
    *
    * @par Binary Address
    * 0x0044F560
@@ -230,8 +234,8 @@ struct Slot {
   /**
    * @brief Subtract the amount of sun.
    *
-   * @param count The amount to be subtracted, stored in `EBX`.
-   * @return `true` if the amount of sun is enough, otherwise `false`, stored in `AL`.
+   * @param count The amount to be subtracted, stored in @p EBX.
+   * @return @p true if the amount of sun is enough, otherwise @p false, stored in @p AL.
    *
    * @par Binary Address
    * 0x0041BA60
@@ -289,9 +293,9 @@ struct Slot {
    *
    * @param level_env The level environment.
    * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The Y coordinate of the target location, stored in `EAX`.
+   * @param pos_y     The Y coordinate of the target location, stored in @p EAX.
    * @param plant_id  A plant ID.
-   * @return 0 if the plant can be planted, otherwise the error code, stored in `EAX`.
+   * @return 0 if the plant can be planted, otherwise the error code, stored in @p EAX.
    *
    * @par Binary Address
    * 0x0040E020
@@ -311,7 +315,7 @@ struct Slot {
    *
    * @param level_env The level environment.
    * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The Y coordinate of the target location, stored in `EAX`.
+   * @param pos_y     The Y coordinate of the target location, stored in @p EAX.
    * @param plant_id  A plant ID.
    * @param unknown   It's always -1.
    * @return Unknown.
@@ -359,10 +363,10 @@ struct Slot {
   /**
    * @brief Create a zombie.
    *
-   * @param level_env The level environment, stored in `ECX`.
+   * @param level_env The level environment, stored in @p ECX.
    * @param zombie_id A zombie ID.
    * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The X coordinate of the target location, stored in `EAX`.
+   * @param pos_y     The X coordinate of the target location, stored in @p EAX.
    * @return Unknown.
    *
    * @par Binary Address
@@ -402,19 +406,3 @@ struct Slot {
   ```
 
   Change these two instructions to `mov dword ptr [esi + 28h], 3`.
-
-## Contact
-
-- ***Chen Zhenshuo***
-
-  > ***GitHub***: https://github.com/czs108
-  >
-  > ***E-Mail***: chenzs108@outlook.com
-  >
-  > ***WeChat***: chenzs108
-
-- ***Liu Guowen***
-
-  > ***GitHub***: https://github.com/lgw1995
-  >
-  > ***E-Mail***: liu.guowen@outlook.com
