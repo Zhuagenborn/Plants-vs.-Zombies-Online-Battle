@@ -42,9 +42,9 @@ protected:
      * @details
      * An example:
      * @code
-     * Trampoline{ .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 } },
-     *             .jmp_offset_pos{ sizeof(JMP) },
-     *             .jmp_inst_len{ JMP_LEN } };
+     * Trampoline{ .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 } },
+     *             .jmp_offset_pos{ sizeof(jmp) },
+     *             .jmp_inst_len{ jmp_len } };
      * @endcode
      */
     struct Trampoline {

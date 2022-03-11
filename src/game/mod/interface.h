@@ -16,9 +16,9 @@
 
 #include <cstddef>
 #include <cstdint>
-#include <string_view>
 #include <list>
 #include <memory>
+#include <string_view>
 
 
 namespace game {
@@ -75,7 +75,7 @@ private:
 
 
 //! The base number of zombie IDs.
-constexpr std::int32_t ZOMBIE_ID_BASE{ 0x3C };
+constexpr std::int32_t zombie_id_base{ 0x3C };
 
 /**
  * @brief The global base address.
@@ -156,7 +156,7 @@ struct Slot {
     /**
      * @brief The item ID.
      * @details
-     * If the type of the slot is zombie, this field is equal to the zombie ID plus @p ZOMBIE_ID_BASE.
+     * If the type of the slot is zombie, this field is equal to the zombie ID plus @p zombie_id_base.
      * If the type of the slot is plant, this field is equal to the plant ID.
      *
      * @par Offset
@@ -240,8 +240,8 @@ struct Plant {
  *
  * @bug This function sometimes raises an access exception.
  */
-void CreateZombie(const std::int32_t pos_x, const std::int32_t pos_y,
-                  const std::int32_t id) noexcept;
+void CreateZombie(std::int32_t pos_x, std::int32_t pos_y,
+                  std::int32_t id) noexcept;
 
 /**
  * @brief Create a plant.
@@ -250,8 +250,8 @@ void CreateZombie(const std::int32_t pos_x, const std::int32_t pos_y,
  * @param pos_y The Y-coordinate of the target location.
  * @param id    A plant ID.
  */
-void CreatePlant(const std::int32_t pos_x, const std::int32_t pos_y,
-                 const std::int32_t id) noexcept;
+void CreatePlant(std::int32_t pos_x, std::int32_t pos_y,
+                 std::int32_t id) noexcept;
 
 /**
  * @brief Terminate the current level.

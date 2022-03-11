@@ -30,7 +30,7 @@ public:
      * @param role  A player's role.
      * @param cfg   A configuration.
      */
-    Startup(const Role role, Config cfg) noexcept;
+    Startup(Role role, Config cfg) noexcept;
 
     ~Startup() noexcept;
 

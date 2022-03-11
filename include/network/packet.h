@@ -76,7 +76,7 @@ public:
      * @param data  A buffer.
      * @return The packet size.
      */
-    std::size_t Write(const std::span<const std::byte> data) noexcept;
+    std::size_t Write(std::span<const std::byte> data) noexcept;
 
     /**
      * @brief Read data.

@@ -61,7 +61,7 @@ protected:
     std::optional<std::intptr_t> JumpRet() const noexcept override;
 
 private:
-    static constexpr std::size_t DETOUR_LEN{ 0x24 };
+    static constexpr std::size_t detour_len{ 0x24 };
 
     static void __stdcall Detour() noexcept;
 
@@ -102,7 +102,7 @@ protected:
     std::optional<std::intptr_t> JumpRet() const noexcept override;
 
 private:
-    static constexpr std::size_t DETOUR_LEN{ 0x1A };
+    static constexpr std::size_t detour_len{ 0x1A };
 
     static void __stdcall SetSlot(Slot& slot) noexcept;
 
@@ -128,7 +128,7 @@ protected:
     std::optional<std::intptr_t> JumpRet() const noexcept override;
 
 private:
-    static constexpr std::size_t DETOUR_LEN{ 0x14 };
+    static constexpr std::size_t detour_len{ 0x14 };
 
     static void __stdcall Callback() noexcept;
 
@@ -152,15 +152,14 @@ protected:
     std::optional<std::intptr_t> JumpRet() const noexcept override;
 
 private:
-    static constexpr std::size_t ZOMBIE_DETOUR_LEN{ 0x20 };
+    static constexpr std::size_t zombie_detour_len{ 0x20 };
 
     static void __stdcall ZombieDetour() noexcept;
 
     static void __stdcall PlantDetour() noexcept;
 
-    static void __stdcall ZombieCallback(const std::int32_t pos_x,
-                                         const std::int32_t pos_y,
-                                         const std::int32_t id) noexcept;
+    static void __stdcall ZombieCallback(std::int32_t pos_x, std::int32_t pos_y,
+                                         std::int32_t id) noexcept;
 };
 
 /**
@@ -180,13 +179,12 @@ protected:
     std::optional<std::intptr_t> JumpRet() const noexcept override;
 
 private:
-    static constexpr std::size_t DETOUR_LEN{ 0x21 };
+    static constexpr std::size_t detour_len{ 0x21 };
 
     static void __stdcall Detour() noexcept;
 
-    static void __stdcall Callback(const std::int32_t pos_x,
-                                   const std::int32_t pos_y,
-                                   const std::int32_t id) noexcept;
+    static void __stdcall Callback(std::int32_t pos_x, std::int32_t pos_y,
+                                   std::int32_t id) noexcept;
 };
 
 }  // namespace game::mod::hook

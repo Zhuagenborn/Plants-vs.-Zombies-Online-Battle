@@ -40,7 +40,7 @@ std::string_view DisableAutoPause::Name() const noexcept {
 }
 
 void DisableAutoPause::Enable() {
-    AlterMemory(0x0044F478, std::array{ RET, NOP, NOP, NOP, NOP }, {});
+    AlterMemory(0x0044F478, std::array{ ret, nop, nop, nop, nop }, {});
 }
 
 std::string_view RemoveDefaultPlants::Name() const noexcept {
@@ -74,7 +74,7 @@ std::string_view AllowMultiProcess::Name() const noexcept {
 }
 
 void AllowMultiProcess::Enable() {
-    AlterMemory(VIRTUAL_ADDR, std::array{ SHORT_JMP }, {});
+    AlterMemory(virtual_addr, std::array{ short_jmp }, {});
 }
 
 void AllowMultiProcess::Enable(const std::string_view file_path) {
@@ -93,8 +93,8 @@ void AllowMultiProcess::Enable(const std::string_view file_path) {
 
     file.open(file_path.data(),
               std::ios::in | std::ios::out | std::ios::binary);
-    file.seekp(RAW_OFFSET);
-    file.write(reinterpret_cast<const char*>(&SHORT_JMP), sizeof(SHORT_JMP));
+    file.seekp(raw_offset);
+    file.write(reinterpret_cast<const char*>(&short_jmp), sizeof(short_jmp));
 }
 
 }  // namespace game::mod

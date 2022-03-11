@@ -30,7 +30,7 @@ using namespace game;
 
 namespace {
 
-constexpr std::string_view CFG_FILE{ "online_config.ini" };
+constexpr std::string_view cfg_file{ "online_config.ini" };
 
 extern std::unique_ptr<Startup> startup;
 
@@ -43,7 +43,7 @@ BOOL APIENTRY DllMain(HMODULE, const DWORD reason, LPVOID) {
             case DLL_PROCESS_ATTACH: {
                 startup = std::make_unique<Startup>(
                     Role::Zombie,
-                    Config{ std::filesystem::absolute(CFG_FILE).string() });
+                    Config{ std::filesystem::absolute(cfg_file).string() });
                 startup->Run();
                 break;
             }

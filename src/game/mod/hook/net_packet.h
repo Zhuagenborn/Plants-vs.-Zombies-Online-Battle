@@ -59,14 +59,14 @@ struct alignas(std::int32_t) NewItem : public Header {
  *
  * @exception std::invalid_argument An unknown packet type.
  */
-void Process(const Header* const packet);
+void Process(const Header* packet);
 
 /**
  * @brief The receiver thread.
  *
  * @param stop_token    A stop token that can stop the thread.
  */
-void RecvLoop(const std::stop_token stop_token) noexcept;
+void RecvLoop(std::stop_token stop_token) noexcept;
 
 /**
  * @brief Stop the receiver thread.

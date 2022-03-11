@@ -32,13 +32,13 @@ namespace game {
 enum class Role { Plant, Zombie };
 
 //! The number of slots.
-constexpr std::size_t SLOT_NUM{ 9 };
+constexpr std::size_t slot_num{ 9 };
 
 
 namespace cfg {
 
 //! Slots.
-using Slots = std::array<std::int32_t, SLOT_NUM>;
+using Slots = std::array<std::int32_t, slot_num>;
 
 /**
  * @brief Player-related configurations.
@@ -77,11 +77,11 @@ public:
     //! The default server IP address.
 #ifdef INET6
     static constexpr std::string_view default_server_ip{
-        net::Ipv6Addr::LOOP_BACK
+        net::Ipv6Addr::loop_back
     };
 #else
     static constexpr std::string_view default_server_ip{
-        net::Ipv4Addr::LOOP_BACK
+        net::Ipv4Addr::loop_back
     };
 #endif  // INET6
 
@@ -95,7 +95,7 @@ public:
      *
      * @param file  A file path.
      */
-    Network(const std::string_view file) noexcept;
+    Network(std::string_view file) noexcept;
 
     //! Get the server IP address.
     std::string_view ServerIp() const noexcept;
@@ -105,13 +105,13 @@ public:
 
 private:
     //! The section name of network configurations in the @p .ini file.
-    static constexpr std::string_view INI_SECTION{ "Network" };
+    static constexpr std::string_view ini_section{ "Network" };
 
     //! The key name of the server IP address in the @p .ini file.
-    static constexpr std::string_view IP_INI_KEY{ "ServerIP" };
+    static constexpr std::string_view ip_ini_key{ "ServerIP" };
 
     //! The key name of the port number in the @p .ini file.
-    static constexpr std::string_view PORT_INI_KEY{ "Port" };
+    static constexpr std::string_view port_ini_key{ "Port" };
 
     std::string server_ip_{ default_server_ip };
     std::uint16_t port_{ default_port };
@@ -132,7 +132,7 @@ public:
      *
      * @param file  A file path.
      */
-    Config(const std::string_view file) noexcept;
+    Config(std::string_view file) noexcept;
 
     //! Get player-related configurations.
     const cfg::Player& Player() const noexcept;

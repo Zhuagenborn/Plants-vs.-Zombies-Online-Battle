@@ -55,18 +55,17 @@ private:
  */
 class Ipv4Addr final : public IpAddr {
 public:
-    static constexpr int VERSION{ AF_INET };
+    static constexpr int version{ AF_INET };
 
-    static constexpr std::string_view LOOP_BACK{ "127.0.0.1" };
+    static constexpr std::string_view loop_back{ "127.0.0.1" };
 
-    static constexpr std::string_view ANY{ "0.0.0.0" };
+    static constexpr std::string_view any{ "0.0.0.0" };
 
     using RawType = sockaddr_in;
 
     explicit Ipv4Addr(const sockaddr_in& addr) noexcept;
 
-    explicit Ipv4Addr(const std::string_view ip,
-                      const std::uint16_t port) noexcept;
+    explicit Ipv4Addr(std::string_view ip, std::uint16_t port) noexcept;
 
     int Version() const noexcept override;
 
@@ -83,18 +82,17 @@ private:
  */
 class Ipv6Addr final : public IpAddr {
 public:
-    static constexpr int VERSION{ AF_INET6 };
+    static constexpr int version{ AF_INET6 };
 
-    static constexpr std::string_view LOOP_BACK{ "::1" };
+    static constexpr std::string_view loop_back{ "::1" };
 
-    static constexpr std::string_view ANY{ "::" };
+    static constexpr std::string_view any{ "::" };
 
     using RawType = sockaddr_in6;
 
     explicit Ipv6Addr(const sockaddr_in6& addr) noexcept;
 
-    explicit Ipv6Addr(const std::string_view ip,
-                      const std::uint16_t port) noexcept;
+    explicit Ipv6Addr(std::string_view ip, std::uint16_t port) noexcept;
 
     int Version() const noexcept override;
 
@@ -115,7 +113,7 @@ private:
 template <typename T>
 concept ValidIpAddr =
     std::derived_from<T, IpAddr> && !std::same_as<T, IpAddr> && requires(T) {
-    { T::VERSION } -> std::convertible_to<int>;
+    { T::version } -> std::convertible_to<int>;
     typename T::RawType;
 };
 

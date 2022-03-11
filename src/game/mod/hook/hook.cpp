@@ -21,10 +21,10 @@ namespace game::mod::hook {
 using namespace sys;
 
 Hook::Trampoline BeforeLoadLevel::HookBytes() const noexcept {
-    return { .code{ CALL, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP },
-             .jmp_offset_pos{ sizeof(CALL) },
-             .jmp_inst_len{ CALL_LEN } };
+    return { .code{ call, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop },
+             .jmp_offset_pos{ sizeof(call) },
+             .jmp_inst_len{ call_len } };
 }
 
 
@@ -80,9 +80,9 @@ void __stdcall BeforeLoadLevel::Callback() noexcept {
 
             std::string_view ip{};
             if (typeid(cfg::IpAddr) == typeid(net::Ipv4Addr)) {
-                ip = net::Ipv4Addr::ANY;
+                ip = net::Ipv4Addr::any;
             } else if (typeid(cfg::IpAddr) == typeid(net::Ipv6Addr)) {
-                ip = net::Ipv6Addr::ANY;
+                ip = net::Ipv6Addr::any;
             } else {
                 assert(false);
                 std::abort();
@@ -118,10 +118,10 @@ void __stdcall BeforeLoadLevel::Callback() noexcept {
 
 
 Hook::Trampoline AfterLoadLevel::HookBytes() const noexcept {
-    return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP },
-             .jmp_offset_pos{ sizeof(JMP) },
-             .jmp_inst_len{ JMP_LEN } };
+    return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop },
+             .jmp_offset_pos{ sizeof(jmp) },
+             .jmp_inst_len{ jmp_len } };
 }
 
 
@@ -138,7 +138,7 @@ std::intptr_t AfterLoadLevel::To() const noexcept {
 }
 
 std::optional<std::intptr_t> AfterLoadLevel::JumpRet() const noexcept {
-    return GetFuncEntryAddr(To()) + DETOUR_LEN - JMP_LEN;
+    return GetFuncEntryAddr(To()) + detour_len - jmp_len;
 }
 
 void __stdcall AfterLoadLevel::Callback() noexcept {
@@ -183,10 +183,10 @@ __declspec(naked) void __stdcall AfterLoadLevel::Detour() noexcept {
 
 
 Hook::Trampoline DisableRuntimeMenu::HookBytes() const noexcept {
-    return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP },
-             .jmp_offset_pos{ sizeof(JMP) },
-             .jmp_inst_len{ JMP_LEN } };
+    return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop },
+             .jmp_offset_pos{ sizeof(jmp) },
+             .jmp_inst_len{ jmp_len } };
 }
 
 
@@ -210,10 +210,10 @@ InitSlots::InitSlots() noexcept {
 }
 
 Hook::Trampoline InitSlots::HookBytes() const noexcept {
-    return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP, NOP },
-             .jmp_offset_pos{ sizeof(JMP) },
-             .jmp_inst_len{ JMP_LEN } };
+    return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop, nop },
+             .jmp_offset_pos{ sizeof(jmp) },
+             .jmp_inst_len{ jmp_len } };
 }
 
 
@@ -230,7 +230,7 @@ std::intptr_t InitSlots::To() const noexcept {
 }
 
 std::optional<std::intptr_t> InitSlots::JumpRet() const noexcept {
-    return GetFuncEntryAddr(To()) + DETOUR_LEN - JMP_LEN;
+    return GetFuncEntryAddr(To()) + detour_len - jmp_len;
 }
 
 __declspec(naked) void __stdcall InitSlots::Detour() noexcept {
@@ -261,13 +261,13 @@ void __stdcall InitSlots::SetSlot(Slot& slot) noexcept {
     if (state::role == Role::Plant) {
         slot.id = state::cfg.Player().PlantSlots()[i];
     } else if (state::role == Role::Zombie) {
-        slot.id = state::cfg.Player().ZombieSlots()[i] + ZOMBIE_ID_BASE;
+        slot.id = state::cfg.Player().ZombieSlots()[i] + zombie_id_base;
     } else {
         assert(false);
         std::abort();
     }
 
-    if (++i == SLOT_NUM) {
+    if (++i == slot_num) {
         initialized_ = true;
         i = 0;
     }
@@ -275,10 +275,10 @@ void __stdcall InitSlots::SetSlot(Slot& slot) noexcept {
 
 
 Hook::Trampoline LevelEnd::HookBytes() const noexcept {
-    return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP },
-             .jmp_offset_pos{ sizeof(JMP) },
-             .jmp_inst_len{ JMP_LEN } };
+    return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop },
+             .jmp_offset_pos{ sizeof(jmp) },
+             .jmp_inst_len{ jmp_len } };
 }
 
 
@@ -295,7 +295,7 @@ std::intptr_t LevelEnd::To() const noexcept {
 }
 
 std::optional<std::intptr_t> LevelEnd::JumpRet() const noexcept {
-    return GetFuncEntryAddr(To()) + DETOUR_LEN - JMP_LEN;
+    return GetFuncEntryAddr(To()) + detour_len - jmp_len;
 }
 
 void __stdcall LevelEnd::Callback() noexcept {
@@ -344,15 +344,15 @@ __declspec(naked) void __stdcall LevelEnd::Detour() noexcept {
 
 Hook::Trampoline CreateZombie::HookBytes() const noexcept {
     if (state::role == Role::Plant) {
-        return { .code{ CALL, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+        return { .code{ call, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
                         std::byte{ 0 } },
-                 .jmp_offset_pos{ sizeof(CALL) },
-                 .jmp_inst_len{ CALL_LEN } };
+                 .jmp_offset_pos{ sizeof(call) },
+                 .jmp_inst_len{ call_len } };
     } else if (state::role == Role::Zombie) {
-        return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                        std::byte{ 0 }, NOP },
-                 .jmp_offset_pos{ sizeof(JMP) },
-                 .jmp_inst_len{ JMP_LEN } };
+        return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                        std::byte{ 0 }, nop },
+                 .jmp_offset_pos{ sizeof(jmp) },
+                 .jmp_inst_len{ jmp_len } };
     } else {
         assert(false);
         std::abort();
@@ -392,7 +392,7 @@ std::optional<std::intptr_t> CreateZombie::JumpRet() const noexcept {
     if (state::role == Role::Plant) {
         return std::nullopt;
     } else if (state::role == Role::Zombie) {
-        return GetFuncEntryAddr(To()) + ZOMBIE_DETOUR_LEN - JMP_LEN;
+        return GetFuncEntryAddr(To()) + zombie_detour_len - jmp_len;
     } else {
         assert(false);
         std::abort();
@@ -472,10 +472,10 @@ __declspec(naked) void __stdcall CreateZombie::PlantDetour() noexcept {
 
 
 Hook::Trampoline CreatePlant::HookBytes() const noexcept {
-    return { .code{ JMP, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
-                    std::byte{ 0 }, NOP, NOP },
-             .jmp_offset_pos{ sizeof(JMP) },
-             .jmp_inst_len{ JMP_LEN } };
+    return { .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 },
+                    std::byte{ 0 }, nop, nop },
+             .jmp_offset_pos{ sizeof(jmp) },
+             .jmp_inst_len{ jmp_len } };
 }
 
 
@@ -492,7 +492,7 @@ std::intptr_t CreatePlant::To() const noexcept {
 }
 
 std::optional<std::intptr_t> CreatePlant::JumpRet() const noexcept {
-    return GetFuncEntryAddr(To()) + DETOUR_LEN - JMP_LEN;
+    return GetFuncEntryAddr(To()) + detour_len - jmp_len;
 }
 
 void __stdcall CreatePlant::Callback(const std::int32_t pos_x,

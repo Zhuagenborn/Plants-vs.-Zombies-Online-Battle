@@ -57,7 +57,7 @@ public:
      *
      * @exception std::system_error The operation failed.
      */
-    std::size_t Send(const std::span<const std::byte> data) const;
+    std::size_t Send(std::span<const std::byte> data) const;
 
     /**
      * @brief Receive data.
@@ -66,13 +66,13 @@ public:
      *
      * @exception std::system_error The operation failed.
      */
-    std::size_t Recv(const std::span<std::byte> buffer) const;
+    std::size_t Recv(std::span<std::byte> buffer) const;
 };
 
 
 template <ValidIpAddr ADDR>
 TcpSocket<ADDR>::TcpSocket() :
-    Socket<ADDR>{ socket(ADDR::VERSION, SOCK_STREAM, 0) } {
+    Socket<ADDR>{ socket(ADDR::version, SOCK_STREAM, 0) } {
     if (this->id_ == INVALID_SOCKET) {
         sys::ThrowWsaLastError();
     }

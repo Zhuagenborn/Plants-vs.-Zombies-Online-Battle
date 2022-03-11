@@ -24,14 +24,14 @@ Network::Network() noexcept = default;
 
 Network::Network(const std::string_view file) noexcept {
     char ip[256]{};
-    if (const auto ip_size{ GetPrivateProfileStringA(INI_SECTION.data(),
-                                                     IP_INI_KEY.data(), "", ip,
+    if (const auto ip_size{ GetPrivateProfileStringA(ini_section.data(),
+                                                     ip_ini_key.data(), "", ip,
                                                      sizeof(ip), file.data()) };
         ip_size != 0) {
         server_ip_ = ip;
     }
 
-    port_ = GetPrivateProfileIntA(INI_SECTION.data(), PORT_INI_KEY.data(),
+    port_ = GetPrivateProfileIntA(ini_section.data(), port_ini_key.data(),
                                   default_port, file.data());
 }
 

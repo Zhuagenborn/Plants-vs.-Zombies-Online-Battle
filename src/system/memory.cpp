@@ -44,10 +44,10 @@ void AlterMemory(const std::intptr_t addr,
 }
 
 
-std::array<std::byte, JMP_LEN> FormatJmpBytes(const std::intptr_t from,
+std::array<std::byte, jmp_len> FormatJmpBytes(const std::intptr_t from,
                                               const std::intptr_t to) noexcept {
-    std::array<std::byte, JMP_LEN> bytes{ JMP };
-    const auto offset{ to - from - JMP_LEN };
+    std::array<std::byte, jmp_len> bytes{ jmp };
+    const auto offset{ to - from - jmp_len };
     std::memcpy(bytes.data() + 1, &offset, sizeof(offset));
     return bytes;
 }
@@ -56,12 +56,12 @@ std::array<std::byte, JMP_LEN> FormatJmpBytes(const std::intptr_t from,
 std::intptr_t GetFuncEntryAddr(const std::intptr_t addr) noexcept {
     const auto op{ *reinterpret_cast<std::byte*>(addr) };
 
-    if (op != JMP) {
+    if (op != jmp) {
         return addr;
     } else {
         const auto offset{ *reinterpret_cast<std::ptrdiff_t*>(
             addr + sizeof(std::byte)) };
-        return addr + offset + JMP_LEN;
+        return addr + offset + jmp_len;
     }
 }
 

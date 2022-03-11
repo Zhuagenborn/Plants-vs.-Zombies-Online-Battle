@@ -37,7 +37,7 @@ namespace net {
  *
  * @exception std::overflow_error   The data is too large.
  */
-void CheckSizeLimit(const std::size_t size, const std::string_view msg);
+void CheckSizeLimit(std::size_t size, std::string_view msg);
 
 /**
  * @interface Socket
@@ -58,7 +58,7 @@ public:
      *
      * @param id    A socket handle.
      */
-    Socket(const SOCKET id) noexcept;
+    Socket(SOCKET id) noexcept;
 
     Socket(Socket&& that) noexcept;
 

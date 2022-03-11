@@ -28,14 +28,14 @@ namespace game::mod {
  */
 class SetSunAmount : public Mod {
 public:
-    SetSunAmount(const std::size_t amount) noexcept;
+    SetSunAmount(std::size_t amount) noexcept;
 
     void Enable() override;
 
     std::string_view Name() const noexcept override;
 
 private:
-    const std::size_t amount_;
+    std::size_t amount_;
 };
 
 /**
@@ -72,13 +72,13 @@ public:
      *
      * @exception std::invalid_argument The path is empty.
      */
-    void Enable(const std::string_view file_path);
+    void Enable(std::string_view file_path);
 
     std::string_view Name() const noexcept override;
 
 private:
-    static constexpr std::intptr_t RAW_OFFSET{ 0x00153F1B };
-    static constexpr std::intptr_t VIRTUAL_ADDR{ 0x00553F1B };
+    static constexpr std::intptr_t raw_offset{ 0x00153F1B };
+    static constexpr std::intptr_t virtual_addr{ 0x00553F1B };
 };
 
 }  // namespace game::mod
