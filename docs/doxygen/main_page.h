@@ -110,8 +110,6 @@
  *
  * `docs/Key Data and Functions.md` describes key data and functions obtained by reverse engineering.
  *
- * The class diagram is created by [*PlantUML*](https://plantuml.com). See `docs/class-diagram.plantuml` for more details.
- *
  * @section issues-bugs Issues & Bugs
  *
  * - The game sometimes crashes when creating zombies.

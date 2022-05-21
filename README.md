@@ -121,9 +121,143 @@ The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specificat
 
 `docs/Key Data and Functions.md` describes key data and functions obtained by reverse engineering.
 
-The class diagram is created by [*PlantUML*](https://plantuml.com). See `docs/class-diagram.plantuml` for more details.
+### Class Diagram
 
-![class-diagram](docs/class-diagram.png)
+```mermaid
+classDiagram
+
+class Role {
+    <<enumeration>>
+    Plante
+    Zombie
+}
+
+class Config {
+    vector~int~ zombies
+    vector~int~ plants
+    string server_ip
+    int port
+}
+
+class State
+State --> Role
+State --> Config
+State --> TcpSocket
+
+class IpAddr {
+    <<interface>>
+    Version() int
+}
+
+class Ipv4Addr
+IpAddr <|.. Ipv4Addr
+
+class Ipv6Addr
+IpAddr <|.. Ipv6Addr
+
+class Socket {
+    SetAddr(IpAddr)
+    Bind()
+    Close()
+}
+
+Socket --> IpAddr
+
+class TcpSocket {
+    <<>>
+    Connect(IpAddr)
+    Send(data) size
+    Recv(buffer) size
+}
+
+Socket <|-- TcpSocket
+
+class Listener {
+    Bind(IpAddr)
+    Listen()
+    Accept() TcpSocket
+    Close()
+}
+
+Listener --> TcpSocket
+
+class Packet {
+    Recv(TcpSocket)$ Packet
+    Send(TcpSocket)
+    Write(data) size
+    Read() data
+}
+
+Packet ..> TcpSocket
+
+class Mod {
+    <<interface>>
+    Enable()
+    Disable()
+}
+
+class ModLoader {
+    Add(Mod)
+    Load()
+}
+
+ModLoader o-- Mod
+
+class RemoveDefaultPlants
+Mod <|.. RemoveDefaultPlants
+
+class SetSunAmount
+Mod <|.. SetSunAmount
+
+class Hook {
+    <<interface>>
+    #From() address
+    #To() address
+    #JumpRet() optional~address~
+}
+
+Mod <|-- Hook
+
+class BeforeLoadLevel
+Hook <|.. BeforeLoadLevel
+BeforeLoadLevel ..> CreateZombie
+BeforeLoadLevel ..> CreatePlant
+BeforeLoadLevel ..> LevelEnd
+BeforeLoadLevel ..> Listener
+BeforeLoadLevel ..> State
+
+class AfterLoadLevel
+Hook <|.. AfterLoadLevel
+AfterLoadLevel ..> RemoveDefaultPlants
+AfterLoadLevel ..> InitSlots
+
+class InitSlots
+Hook <|.. InitSlots
+InitSlots ..> State
+
+class LevelEnd
+Hook <|.. LevelEnd
+LevelEnd ..> State
+LevelEnd ..> Packet
+
+class CreateZombie
+Hook <|.. CreateZombie
+CreateZombie ..> State
+CreateZombie ..> Packet
+
+class CreatePlant
+Hook <|.. CreatePlant
+CreatePlant ..> State
+CreatePlant ..> Packet
+
+class Startup {
+    Run()
+    Stop()
+}
+
+Startup --> ModLoader
+Startup --> State
+```
 
 ## Issues & Bugs
 
