@@ -39,15 +39,6 @@ public:
 
     //! Get the socket address.
     virtual const sockaddr* Raw() const noexcept = 0;
-
-private:
-    //! A socket library initializer.
-    struct Initializer {
-        Initializer();
-        ~Initializer();
-    };
-
-    static Initializer initializer_;
 };
 
 /**

@@ -7,19 +7,28 @@
 
 namespace net {
 
-IpAddr::Initializer IpAddr::initializer_{};
+namespace {
 
-IpAddr::Initializer::Initializer() {
+//! A socket library initializer.
+struct Initializer {
+    Initializer();
+    ~Initializer() noexcept;
+};
+
+const Initializer initializer_{};
+
+Initializer::Initializer() {
     WSADATA wsa{};
     if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
         sys::ThrowWsaLastError();
     }
 }
 
-IpAddr::Initializer::~Initializer() {
+Initializer::~Initializer() noexcept {
     WSACleanup();
 }
 
+}  // namespace
 
 Ipv4Addr::Ipv4Addr(const sockaddr_in& addr) noexcept : addr_{ addr } {}
 
