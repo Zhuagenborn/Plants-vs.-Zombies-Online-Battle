@@ -56,7 +56,7 @@ public:
 
     explicit Ipv4Addr(const sockaddr_in& addr) noexcept;
 
-    explicit Ipv4Addr(std::string_view ip, std::uint16_t port) noexcept;
+    explicit Ipv4Addr(std::string_view ip, std::uint16_t port);
 
     int Version() const noexcept override;
 
@@ -83,7 +83,7 @@ public:
 
     explicit Ipv6Addr(const sockaddr_in6& addr) noexcept;
 
-    explicit Ipv6Addr(std::string_view ip, std::uint16_t port) noexcept;
+    explicit Ipv6Addr(std::string_view ip, std::uint16_t port);
 
     int Version() const noexcept override;
 

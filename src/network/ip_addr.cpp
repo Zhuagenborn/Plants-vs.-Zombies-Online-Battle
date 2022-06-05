@@ -32,8 +32,7 @@ Initializer::~Initializer() noexcept {
 
 Ipv4Addr::Ipv4Addr(const sockaddr_in& addr) noexcept : addr_{ addr } {}
 
-Ipv4Addr::Ipv4Addr(const std::string_view ip,
-                   const std::uint16_t port) noexcept {
+Ipv4Addr::Ipv4Addr(const std::string_view ip, const std::uint16_t port) {
     addr_.sin_family = version;
     addr_.sin_port = htons(port);
     if (inet_pton(version, ip.data(), &addr_.sin_addr) != 1) {
@@ -56,8 +55,7 @@ const sockaddr* Ipv4Addr::Raw() const noexcept {
 
 Ipv6Addr::Ipv6Addr(const sockaddr_in6& addr) noexcept : addr_{ addr } {}
 
-Ipv6Addr::Ipv6Addr(const std::string_view ip,
-                   const std::uint16_t port) noexcept {
+Ipv6Addr::Ipv6Addr(const std::string_view ip, const std::uint16_t port) {
     addr_.sin6_family = version;
     addr_.sin6_port = htons(port);
     if (inet_pton(version, ip.data(), &addr_.sin6_addr) != 1) {
