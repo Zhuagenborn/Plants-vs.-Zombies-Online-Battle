@@ -4,7 +4,7 @@ All information can be obtained through reverse engineering using the following 
 
 - [*Cheat Engine*](https://www.cheatengine.org): An open-source memory scanner.
 - [*IDA Pro*](https://hex-rays.com/ida-pro): A powerful disassembler and versatile debugger.
-- [x64dbg](https://x64dbg.com): An open-source binary debugger for *Windows*.
+- [*x64dbg*](https://x64dbg.com): An open-source binary debugger for *Windows*.
 
 ## Warning
 
@@ -154,7 +154,7 @@ struct Slot {
        */
       std::int32_t recharge_time;
 
-      std::byte unknown3[12];
+      std::byte unknown3[8];
 
       /**
        * @brief The name.
@@ -300,7 +300,7 @@ struct Slot {
    * @par Binary Address
    * 0x0040E020
    */
-  std::int32_t CheckPlantingConflit(
+  std::int32_t CanBePlanted(
       void* level_env,
       std::int32_t pos_x,
       std::int32_t pos_y,

@@ -221,7 +221,7 @@ struct Plant {
      */
     std::int32_t recharge_time;
 
-    std::byte unknown3[12];
+    std::byte unknown3[8];
 
     /**
      * @brief The name.
