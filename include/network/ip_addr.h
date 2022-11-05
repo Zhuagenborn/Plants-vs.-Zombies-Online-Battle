@@ -31,6 +31,8 @@ namespace net {
  */
 class IpAddr {
 public:
+    virtual ~IpAddr() noexcept = default;
+
     //! Get the IP version.
     virtual int Version() const noexcept = 0;
 
