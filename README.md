@@ -49,7 +49,7 @@ target_compile_definitions(game PRIVATE INET6=1)
 >
 > The *MD5* of `PlantsVsZombies.exe` is `37B729B4056131722A556E646AC915E9`.
 
-In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/Zhuagenborn/Dll-Injector).
+In order to activate online functions, `plant.dll` and `zombie.dll` must be injected into the game when it starts. You can directly use this simple injection tool: [*Dll-Injector*](https://github.com/Zhuagenborn/Windows-DLL-Injector).
 
 ![online-battle](docs/images/online-battle.gif)
 
