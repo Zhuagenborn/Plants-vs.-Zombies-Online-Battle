@@ -119,20 +119,4 @@
  * @section license License
  *
  * Distributed under the *MIT License*. See `LICENSE` for more information.
- *
- * @section contact Contact
- *
- * - ***Chen Zhenshuo***
- *
- *   > ***GitHub***: https://github.com/czs108
- *   >
- *   > ***E-Mail***: chenzs108@outlook.com
- *   >
- *   > ***WeChat***: chenzs108
- *
- * - ***Liu Guowen***
- *
- *   > ***GitHub***: https://github.com/lgw1995
- *   >
- *   > ***E-Mail***: liu.guowen@outlook.com
  */

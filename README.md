@@ -6,7 +6,6 @@
 [![Visual-Studio](docs/badges/Made-with-Visual-Studio.svg)](https://visualstudio.microsoft.com/)
 [![Windows](docs/badges/Microsoft-Windows.svg)](https://www.microsoft.com/en-ie/windows)
 ![License](docs/badges/License-MIT.svg)
-[![DOI](https://zenodo.org/badge/294864064.svg)](https://zenodo.org/badge/latestdoi/294864064)
 
 ## Introduction
 
@@ -268,34 +267,3 @@ Startup --> State
 ## License
 
 Distributed under the *MIT License*. See `LICENSE` for more information.
-
-## Citing
-
-```tex
-@software{chenzs108_2021_5159165,
-  author       = {Chen Zhenshuo and Liu Guowen},
-  title        = {Zhuagenborn/Plants-vs.-Zombies-Online-Battle: v1.0.0},
-  month        = aug,
-  year         = 2021,
-  publisher    = {Zenodo},
-  version      = {v1.0.0},
-  doi          = {10.5281/zenodo.5159165},
-  url          = {https://doi.org/10.5281/zenodo.5159165}
-}
-```
-
-## Contact
-
-- ***Chen Zhenshuo***
-
-  > ***GitHub***: https://github.com/czs108
-  >
-  > ***E-Mail***: chenzs108@outlook.com
-  >
-  > ***WeChat***: chenzs108
-
-- ***Liu Guowen***
-
-  > ***GitHub***: https://github.com/lgw1995
-  >
-  > ***E-Mail***: liu.guowen@outlook.com

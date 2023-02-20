@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+authors:
+- family-names: Chen
+  given-names: Zhenshuo
+  orcid: https://orcid.org/0000-0003-2091-4160
+- family-names: Liu
+  given-names: Guowen
+  orcid: https://orcid.org/0000-0002-8375-5729
+title: Plants vs. Zombies Online Battle
+date-released: 2021-08-04
+url: https://github.com/Zhuagenborn/Plants-vs.-Zombies-Online-Battle
