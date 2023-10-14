@@ -75,7 +75,7 @@ private:
 
 
 //! The base number of zombie IDs.
-constexpr std::int32_t zombie_id_base{ 0x3C };
+inline constexpr std::int32_t zombie_id_base{ 0x3C };
 
 /**
  * @brief The global base address.

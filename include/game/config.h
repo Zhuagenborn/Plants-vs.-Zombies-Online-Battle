@@ -32,7 +32,7 @@ namespace game {
 enum class Role { Plant, Zombie };
 
 //! The number of slots.
-constexpr std::size_t slot_num{ 9 };
+inline constexpr std::size_t slot_num{ 9 };
 
 
 namespace cfg {

@@ -25,25 +25,25 @@
 namespace sys {
 
 //! The operation code of long @p jmp instruction.
-constexpr std::byte jmp{ std::byte{ 0xE9 } };
+inline constexpr std::byte jmp{ std::byte{ 0xE9 } };
 
 //! The operation code of short @p jmp instruction.
-constexpr std::byte short_jmp{ std::byte{ 0xEB } };
+inline constexpr std::byte short_jmp{ std::byte{ 0xEB } };
 
 //! The operation code of @p call instruction.
-constexpr std::byte call{ std::byte{ 0xE8 } };
+inline constexpr std::byte call{ std::byte{ 0xE8 } };
 
 //! The operation code of @p ret instruction.
-constexpr std::byte ret{ std::byte{ 0xC3 } };
+inline constexpr std::byte ret{ std::byte{ 0xC3 } };
 
 //! The operation code of @p nop instruction.
-constexpr std::byte nop{ std::byte{ 0x90 } };
+inline constexpr std::byte nop{ std::byte{ 0x90 } };
 
 //! The length of long @p jmp instruction.
-constexpr std::size_t jmp_len{ 5 };
+inline constexpr std::size_t jmp_len{ 5 };
 
 //! The length of @p call instruction.
-constexpr std::size_t call_len{ jmp_len };
+inline constexpr std::size_t call_len{ jmp_len };
 
 /**
  * @brief Check if an address is @p nullptr.
