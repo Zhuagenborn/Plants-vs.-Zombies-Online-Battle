@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-    Start online Plants vs. Zombies.
+    Start an online Plants vs. Zombies battle.
 .DESCRIPTION
     Start Plants vs. Zombies with dynamic-link library injection.
     Two online players defend and attack as the plant side and zombie side respectively..
 .PARAMETER Role
-    The player's role.
+    The player's role, which can be `Plant` or `Zombie`.
 .EXAMPLE
     PS> .\Startup.ps1 -Role 'Plant'
 .LINK

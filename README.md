@@ -1,4 +1,4 @@
-# Plants vs. Zombies Online Battle
+# *Plants vs. Zombies* Online Battle
 
 ![C++](docs/badges/C++.svg)
 ![MASM](docs/badges/MASM.svg)
