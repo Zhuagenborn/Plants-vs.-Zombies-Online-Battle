@@ -125,68 +125,71 @@ The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specificat
 ```mermaid
 classDiagram
 
-class Role {
-    <<enumeration>>
-    Plante
-    Zombie
+namespace state {
+
+    class Role {
+        <<enumeration>>
+        Plante
+        Zombie
+    }
+
+    class Config {
+        vector~int~ zombies
+        vector~int~ plants
+        string server_ip
+        int port
+    }
+
+    class State
 }
 
-class Config {
-    vector~int~ zombies
-    vector~int~ plants
-    string server_ip
-    int port
-}
-
-class State
 State --> Role
 State --> Config
 State --> TcpSocket
 
-class IpAddr {
-    <<interface>>
-    Version() int
+namespace network {
+
+    class IpAddr {
+        <<interface>>
+        Version() int
+    }
+
+    class Ipv4Addr
+    class Ipv6Addr
+
+    class Socket {
+        SetAddr(IpAddr)
+        Bind()
+        Close()
+    }
+
+    class TcpSocket {
+        <<>>
+        Connect(IpAddr)
+        Send(data) size
+        Recv(buffer) size
+    }
+
+    class Listener {
+        Bind(IpAddr)
+        Listen()
+        Accept() TcpSocket
+        Close()
+    }
+
+    class Packet {
+        Recv(TcpSocket)$ Packet
+        Send(TcpSocket)
+        Write(data) size
+        Read() data
+    }
 }
 
-class Ipv4Addr
 IpAddr <|.. Ipv4Addr
-
-class Ipv6Addr
 IpAddr <|.. Ipv6Addr
-
-class Socket {
-    SetAddr(IpAddr)
-    Bind()
-    Close()
-}
-
 Socket --> IpAddr
-
-class TcpSocket {
-    <<>>
-    Connect(IpAddr)
-    Send(data) size
-    Recv(buffer) size
-}
-
 Socket <|-- TcpSocket
-
-class Listener {
-    Bind(IpAddr)
-    Listen()
-    Accept() TcpSocket
-    Close()
-}
-
 Listener --> TcpSocket
-
-class Packet {
-    Recv(TcpSocket)$ Packet
-    Send(TcpSocket)
-    Write(data) size
-    Read() data
-}
-
 Packet ..> TcpSocket
 
 class Mod {
