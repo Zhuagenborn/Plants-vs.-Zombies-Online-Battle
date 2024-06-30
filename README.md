@@ -1,4 +1,4 @@
-# Plants vs. Zombies Online Battle
+# *Plants vs. Zombies* Online Battle
 
 ![C++](docs/badges/C++.svg)
 ![MASM](docs/badges/MASM.svg)
@@ -52,7 +52,7 @@ In order to activate online functions, `plant.dll` and `zombie.dll` must be inje
 
 ![online-battle](docs/images/online-battle.gif)
 
-### Playing as Plant
+### Playing as *Plant*
 
 If a player plays as the plant, the game will launch as a server.
 
@@ -68,7 +68,7 @@ Start-OnlineGame.ps1 -Role Plant
 
 Start *I, Zombie Endless* level, the game will pause and wait for a client to connect.
 
-### Playing as Zombie
+### Playing as *Zombie*
 
 If a player plays as the zombie, the game will launch as a client.
 
@@ -84,7 +84,7 @@ Start-OnlineGame.ps1 -Role Zombie
 
 Start *I, Zombie Endless* level, the game will try to connect to the server.
 
-### I, Zombie Endless
+### *I, Zombie Endless*
 
 If the modification has been loaded successfully, ***I, Zombie Endless*** level will be converted into an online level. If your current progress does not have this level, you can copy `game/userdata` to `C:\ProgramData\PopCap Games\PlantsVsZombies\userdata`. Remember to back up your own save-files before copying.
 
@@ -125,68 +125,71 @@ The code comment style follows the [*Doxygen*](http://www.doxygen.nl) specificat
 ```mermaid
 classDiagram
 
-class Role {
-    <<enumeration>>
-    Plante
-    Zombie
+namespace state {
+
+    class Role {
+        <<enumeration>>
+        Plante
+        Zombie
+    }
+
+    class Config {
+        vector~int~ zombies
+        vector~int~ plants
+        string server_ip
+        int port
+    }
+
+    class State
 }
 
-class Config {
-    vector~int~ zombies
-    vector~int~ plants
-    string server_ip
-    int port
-}
-
-class State
 State --> Role
 State --> Config
 State --> TcpSocket
 
-class IpAddr {
-    <<interface>>
-    Version() int
+namespace network {
+
+    class IpAddr {
+        <<interface>>
+        Version() int
+    }
+
+    class Ipv4Addr
+    class Ipv6Addr
+
+    class Socket {
+        SetAddr(IpAddr)
+        Bind()
+        Close()
+    }
+
+    class TcpSocket {
+        <<>>
+        Connect(IpAddr)
+        Send(data) size
+        Recv(buffer) size
+    }
+
+    class Listener {
+        Bind(IpAddr)
+        Listen()
+        Accept() TcpSocket
+        Close()
+    }
+
+    class Packet {
+        Recv(TcpSocket)$ Packet
+        Send(TcpSocket)
+        Write(data) size
+        Read() data
+    }
 }
 
-class Ipv4Addr
 IpAddr <|.. Ipv4Addr
-
-class Ipv6Addr
 IpAddr <|.. Ipv6Addr
-
-class Socket {
-    SetAddr(IpAddr)
-    Bind()
-    Close()
-}
-
 Socket --> IpAddr
-
-class TcpSocket {
-    <<>>
-    Connect(IpAddr)
-    Send(data) size
-    Recv(buffer) size
-}
-
 Socket <|-- TcpSocket
-
-class Listener {
-    Bind(IpAddr)
-    Listen()
-    Accept() TcpSocket
-    Close()
-}
-
 Listener --> TcpSocket
-
-class Packet {
-    Recv(TcpSocket)$ Packet
-    Send(TcpSocket)
-    Write(data) size
-    Read() data
-}
-
 Packet ..> TcpSocket
 
 class Mod {
