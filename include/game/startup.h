@@ -19,29 +19,23 @@
 
 namespace game {
 
-/**
- * @brief The initializer.
- */
+//! The initializer.
 class Startup final {
 public:
     /**
      * @brief Construct an initializer.
      *
-     * @param role  A player's role.
-     * @param cfg   A configuration.
+     * @param role A player's role.
+     * @param cfg A configuration.
      */
     Startup(Role role, Config cfg) noexcept;
 
     ~Startup() noexcept;
 
-    /**
-     * @brief Initialize the game.
-     */
+    //! Initialize the game.
     void Run();
 
-    /**
-     * @brief Release resources.
-     */
+    //! Release resources.
     void Stop() noexcept;
 };
 

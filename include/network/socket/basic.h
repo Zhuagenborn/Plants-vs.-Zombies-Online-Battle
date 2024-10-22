@@ -32,10 +32,10 @@ namespace net {
 /**
  * @brief Check if the data is too large to be sent or received.
  *
- * @param size  The data size.
- * @param msg   An error message.
+ * @param size The data size.
+ * @param msg An error message.
  *
- * @exception std::overflow_error   The data is too large.
+ * @exception std::overflow_error The data is too large.
  */
 void CheckSizeLimit(std::size_t size, std::string_view msg);
 
@@ -48,15 +48,13 @@ void CheckSizeLimit(std::size_t size, std::string_view msg);
 template <ValidIpAddr ADDR>
 class Socket {
 public:
-    /**
-     * @brief Construct an invalid socket.
-     */
+    //! Construct an invalid socket.
     Socket() noexcept;
 
     /**
      * @brief Construct a socket from a low-level handle.
      *
-     * @param id    A socket handle.
+     * @param id A socket handle.
      */
     Socket(SOCKET id) noexcept;
 
@@ -77,7 +75,7 @@ public:
     /**
      * @brief Get the IP address.
      *
-     * @exception std::runtime_error    The IP address is empty.
+     * @exception std::runtime_error The IP address is empty.
      */
     const ADDR& Addr() const;
 

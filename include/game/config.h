@@ -26,9 +26,7 @@
 
 namespace game {
 
-/**
- * @brief Players' roles.
- */
+//! Players' roles.
 enum class Role { Plant, Zombie };
 
 //! The number of slots.
@@ -40,9 +38,7 @@ namespace cfg {
 //! Slots.
 using Slots = std::array<std::int32_t, slot_num>;
 
-/**
- * @brief Player-related configurations.
- */
+//! Player-related configurations.
 class Player final {
 public:
     //! The default zombie slots.
@@ -69,9 +65,7 @@ using IpAddr = net::Ipv6Addr;
 using IpAddr = net::Ipv4Addr;
 #endif  // INET6
 
-/**
- * @brief Network-related configurations.
- */
+//! Network-related configurations.
 class Network final {
 public:
     //! The default server IP address.
@@ -93,7 +87,7 @@ public:
     /**
      * @brief Load configurations from an @p .ini file.
      *
-     * @param file  A file path.
+     * @param file A file path.
      */
     Network(std::string_view file) noexcept;
 
@@ -119,10 +113,7 @@ private:
 
 }  // namespace cfg
 
-
-/**
- * @brief Configurations.
- */
+//! Configurations.
 class Config final {
 public:
     Config() noexcept;
@@ -130,7 +121,7 @@ public:
     /**
      * @brief Load configurations from an @p .ini file.
      *
-     * @param file  A file path.
+     * @param file A file path.
      */
     Config(std::string_view file) noexcept;
 

@@ -23,10 +23,7 @@
 
 namespace game {
 
-/**
- * @interface Mod
- * @brief The modification interface.
- */
+//! The modification interface.
 class Mod {
 public:
     virtual ~Mod() noexcept;
@@ -44,15 +41,13 @@ public:
 
 namespace mod {
 
-/**
- * @brief The modification loader.
- */
+//! The modification loader.
 class Loader final {
 public:
     /**
      * @brief Register a modification.
      *
-     * @param mod   A modification.
+     * @param mod A modification.
      * @return The current loader.
      */
     Loader& Add(std::unique_ptr<Mod> mod);
@@ -64,7 +59,7 @@ private:
     /**
      * @brief Check whether a modification has been registered twice.
      *
-     * @param mod   A modification.
+     * @param mod A modification.
      *
      * @exception std::invalid_argument The modification has been registered before.
      */
@@ -129,6 +124,7 @@ inline constexpr std::int32_t zombie_id_base{ 0x3C };
 
 /**
  * @brief The slot.
+ *
  * @details
  * Set a breakpoint at @p 0x004897B2.
  * Each time the game is interrupted while loading a new level,
@@ -139,15 +135,17 @@ struct Slot {
 
     /**
      * @brief The X-coordinate on the screen.
+     *
      * @par Offset
-     * 0x8
+     * @p 0x8
      */
     std::int32_t screen_pos_x;
 
     /**
      * @brief The Y-coordinate on the screen.
+     *
      * @par Offset
-     * 0xC
+     * @p 0xC
      */
     std::int32_t screen_pos_y;
 
@@ -155,28 +153,28 @@ struct Slot {
 
     /**
      * @brief The item ID.
+     *
      * @details
      * If the type of the slot is zombie, this field is equal to the zombie ID plus @p zombie_id_base.
      * If the type of the slot is plant, this field is equal to the plant ID.
      *
      * @par Offset
-     * 0x34
+     * @p 0x34
      */
     std::int32_t id;
 };
 
-/**
- * @brief The planted plant in a level.
- */
+//! The planted plant in a level.
 struct PlantedPlant {
     std::byte unknown1[321];
 
     /**
      * @brief If the plant is invalid.
+     *
      * @details If this field is @p true, the plant will be removed.
      *
      * @par Offset
-     * 0x141
+     * @p 0x141
      */
     bool invalid;
 
@@ -185,14 +183,16 @@ struct PlantedPlant {
 
 /**
  * @brief Static plant information.
+ *
  * @par Binary Address
- * 0x0069F2B0
+ * @p 0x0069F2B0
  */
 struct Plant {
     /**
      * @brief The ID.
+     *
      * @par Offset
-     * 0x0
+     * @p 0x0
      */
     std::int32_t id;
 
@@ -200,8 +200,9 @@ struct Plant {
 
     /**
      * @brief The image resource.
+     *
      * @par Offset
-     * 0x8
+     * @p 0x8
      */
     std::int32_t ui;
 
@@ -209,15 +210,17 @@ struct Plant {
 
     /**
      * @brief The cost to plant.
+     *
      * @par Offset
-     * 0x10
+     * @p 0x10
      */
     std::int32_t sun_cost;
 
     /**
      * @brief The recharge time.
+     *
      * @par Offset
-     * 0x14
+     * @p 0x14
      */
     std::int32_t recharge_time;
 
@@ -225,8 +228,9 @@ struct Plant {
 
     /**
      * @brief The name.
+     *
      * @par Offset
-     * 0x20
+     * @p 0x20
      */
     char* name;
 };
@@ -236,7 +240,7 @@ struct Plant {
  *
  * @param pos_x The X-coordinate of the target location.
  * @param pos_y The Y-coordinate of the target location.
- * @param id    A zombie ID.
+ * @param id A zombie ID.
  *
  * @bug This function sometimes raises an access exception.
  */
@@ -248,14 +252,12 @@ void CreateZombie(std::int32_t pos_x, std::int32_t pos_y,
  *
  * @param pos_x The X-coordinate of the target location.
  * @param pos_y The Y-coordinate of the target location.
- * @param id    A plant ID.
+ * @param id A plant ID.
  */
 void CreatePlant(std::int32_t pos_x, std::int32_t pos_y,
                  std::int32_t id) noexcept;
 
-/**
- * @brief Terminate the current level.
- */
+//! Terminate the current level.
 void EndLevel() noexcept;
 
 }  // namespace mod

@@ -26,8 +26,8 @@
 namespace game {
 
 /**
- * @interface Hook
  * @brief The hook procedure interface.
+ *
  * @details The framework is: Trampoline -> Detour -> Callback.
  */
 class Hook : public Mod {
@@ -39,9 +39,11 @@ public:
 protected:
     /**
      * @brief The trampoline used to jump to a detour function.
+     *
      * @details
      * An example:
-     * @code
+     *
+     * @code {.cpp}
      * Trampoline{ .code{ jmp, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 }, std::byte{ 0 } },
      *             .jmp_offset_pos{ sizeof(jmp) },
      *             .jmp_inst_len{ jmp_len } };

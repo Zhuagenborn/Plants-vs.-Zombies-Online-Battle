@@ -33,9 +33,7 @@ extern Config cfg;
 //! The network connection.
 extern std::unique_ptr<net::TcpSocket<cfg::IpAddr>> conn;
 
-/**
- * @brief The stoppable thread.
- */
+//! The stoppable thread.
 struct StoppableThread {
     //! The thread handle.
     std::unique_ptr<std::jthread> thread;

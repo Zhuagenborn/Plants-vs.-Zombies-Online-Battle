@@ -25,24 +25,20 @@
 
 namespace net {
 
-/**
- * @brief The header of a network packet.
- */
+//! The header of a network packet.
 struct alignas(std::int32_t) Header {
     //! The size of the following data.
     std::size_t size;
 };
 
-/**
- * @brief The network packet.
- */
+//! The network packet.
 class Packet {
 public:
     /**
      * @brief Receive a packet
      *
-     * @tparam ADDR     A valid IP address.
-     * @param socket    A socket.
+     * @tparam ADDR A valid IP address.
+     * @param socket A socket.
      * @return A packet.
      */
     template <ValidIpAddr ADDR>
@@ -62,8 +58,8 @@ public:
     /**
      * @brief Send the packet.
      *
-     * @tparam ADDR     An IP address.
-     * @param socket    A socket.
+     * @tparam ADDR An IP address.
+     * @param socket A socket.
      */
     template <ValidIpAddr ADDR>
     void Send(const TcpSocket<ADDR>& socket) {
@@ -73,7 +69,7 @@ public:
     /**
      * @brief Write data.
      *
-     * @param data  A buffer.
+     * @param data A buffer.
      * @return The packet size.
      */
     std::size_t Write(std::span<const std::byte> data) noexcept;

@@ -23,9 +23,7 @@
 
 namespace game::mod {
 
-/**
- * @brief Set the amount of sun.
- */
+//! Set the amount of sun.
 class SetSunAmount : public Mod {
 public:
     SetSunAmount(std::size_t amount) noexcept;
@@ -38,9 +36,7 @@ private:
     std::size_t amount_;
 };
 
-/**
- * @brief Disable automatic pause during playing.
- */
+//! Disable automatic pause during playing.
 class DisableAutoPause : public Mod {
 public:
     void Enable() override;
@@ -48,9 +44,7 @@ public:
     std::string_view Name() const noexcept override;
 };
 
-/**
- * @brief Remove all planted plants when an online level begins.
- */
+//! Remove all planted plants when an online level begins.
 class RemoveDefaultPlants : public Mod {
 public:
     void Enable() override;
@@ -58,9 +52,7 @@ public:
     std::string_view Name() const noexcept override;
 };
 
-/**
- * @brief Allow to run multiple game processes simultaneously.
- */
+//! Allow to run multiple game processes simultaneously.
 class AllowMultiProcess : public Mod {
 public:
     void Enable() override;

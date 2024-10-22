@@ -37,7 +37,7 @@ public:
     /**
      * @brief Bind an IP address to the server.
      *
-     * @param addr  An IP address.
+     * @param addr An IP address.
      *
      * @exception std::system_error The operation failed.
      */
@@ -50,9 +50,7 @@ public:
      */
     void Listen();
 
-    /**
-     * @brief Close the server.
-     */
+    //! Close the server.
     void Close() noexcept;
 
     /**

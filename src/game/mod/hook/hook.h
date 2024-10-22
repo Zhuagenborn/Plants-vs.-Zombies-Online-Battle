@@ -24,9 +24,7 @@
 
 namespace game::mod::hook {
 
-/**
- * @brief The hook procedure before loading an online level.
- */
+//! The hook procedure before loading an online level.
 class BeforeLoadLevel : public Hook {
 public:
     std::string_view Name() const noexcept;
@@ -44,9 +42,7 @@ private:
     static void __stdcall Callback() noexcept;
 };
 
-/**
- * @brief The hook procedure after loading an online level.
- */
+//! The hook procedure after loading an online level.
 class AfterLoadLevel : public Hook {
 public:
     std::string_view Name() const noexcept;
@@ -68,9 +64,7 @@ private:
     static void __stdcall Callback() noexcept;
 };
 
-/**
- * @brief Disable the running menu.
- */
+//! Disable the running menu.
 class DisableRuntimeMenu : public Hook {
 public:
     std::string_view Name() const noexcept override;
@@ -83,9 +77,7 @@ protected:
     std::intptr_t To() const noexcept override;
 };
 
-/**
- * @brief The slot initializer.
- */
+//! The slot initializer.
 class InitSlots : public Hook {
 public:
     InitSlots() noexcept;
@@ -111,9 +103,7 @@ private:
     static bool initialized_;
 };
 
-/**
- * @brief The hook procedure at the end of a level.
- */
+//! The hook procedure at the end of a level.
 class LevelEnd : public Hook {
 public:
     std::string_view Name() const noexcept override;
@@ -135,9 +125,7 @@ private:
     static void __stdcall Detour() noexcept;
 };
 
-/**
- * @brief The hook procedure when creating a zombie.
- */
+//! The hook procedure when creating a zombie.
 class CreateZombie : public Hook {
 public:
     std::string_view Name() const noexcept;
@@ -162,9 +150,7 @@ private:
                                          std::int32_t id) noexcept;
 };
 
-/**
- * @brief The hook procedure when creating a plant.
- */
+//! The hook procedure when creating a plant.
 class CreatePlant : public Hook {
 public:
     std::string_view Name() const noexcept;

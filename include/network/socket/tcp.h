@@ -46,7 +46,7 @@ public:
     /**
      * @brief Connect to a server.
      *
-     * @param addr  An IP address.
+     * @param addr An IP address.
      *
      * @exception std::system_error The operation failed.
      */
@@ -62,7 +62,7 @@ public:
     /**
      * @brief Receive data.
      *
-     * @param buffer    A buffer storing data. The function tries to fill this buffer.
+     * @param buffer A buffer storing data. The function tries to fill this buffer.
      *
      * @exception std::system_error The operation failed.
      */

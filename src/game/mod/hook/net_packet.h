@@ -27,9 +27,7 @@ namespace game::netpkg {
 //! Types of packets.
 enum class Type { NewPlant, NewZombie, LevelEnd };
 
-/**
- * @brief The header of a packet.
- */
+//! The header of a packet.
 struct alignas(std::int32_t) Header : public net::Header {
     //! The type.
     Type pkt_type;
@@ -38,9 +36,7 @@ struct alignas(std::int32_t) Header : public net::Header {
     Role role;
 };
 
-/**
- * @brief The packet storing a creation event.
- */
+//! The packet storing a creation event.
 struct alignas(std::int32_t) NewItem : public Header {
     //! The X-coordinate of the target location.
     std::int32_t pos_x;
@@ -55,7 +51,7 @@ struct alignas(std::int32_t) NewItem : public Header {
 /**
  * @brief Process packets.
  *
- * @param packet    A packet.
+ * @param packet A packet.
  *
  * @exception std::invalid_argument An unknown packet type.
  */
@@ -64,14 +60,14 @@ void Process(const Header* packet);
 /**
  * @brief The receiver thread.
  *
- * @param stop_token    A stop token that can stop the thread.
+ * @param stop_token A stop token that can stop the thread.
  */
 void RecvLoop(std::stop_token stop_token) noexcept;
 
 /**
  * @brief Stop the receiver thread.
  *
- * @param wait  Whether to wait for the thread to end.
+ * @param wait Whether to wait for the thread to end.
  */
 void StopRecvLoop(bool wait) noexcept;
 

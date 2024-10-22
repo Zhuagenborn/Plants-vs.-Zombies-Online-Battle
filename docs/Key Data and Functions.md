@@ -19,23 +19,23 @@ All information can be obtained through reverse engineering using the following 
 Set a breakpoint at `0x004897B2`. Each time the game is interrupted while loading a new level, the 4-bit content of `[ESP]` will be the address of the  slot structure that the game is displaying currently.
 
 ```c++
-/**
- * @brief The slot.
- */
+//! The slot.
 struct Slot {
     std::byte unknown1[8];
 
     /**
      * @brief The X-coordinate on the screen.
+     *
      * @par Offset
-     * 0x8
+     * @p 0x8
      */
     std::int32_t screen_pos_x;
 
     /**
      * @brief The Y-coordinate on the screen.
+     *
      * @par Offset
-     * 0xC
+     * @p 0xC
      */
     std::int32_t screen_pos_y;
 
@@ -43,12 +43,13 @@ struct Slot {
 
     /**
      * @brief The item ID.
+     *
      * @details
-     * If the type of the slot is zombie, this field is equal to the zombie ID plus 0x3C.
+     * If the type of the slot is zombie, this field is equal to the zombie ID plus @p 0x3C.
      * If the type of the slot is plant, this field is equal to the plant ID.
      *
      * @par Offset
-     * 0x34
+     * @p 0x34
      */
     std::int32_t id;
 };
@@ -118,14 +119,16 @@ struct Slot {
   ```c++
   /**
    * @brief Static plant information.
+   *
    * @par Binary Address
-   * 0x0069F2B0
+   * @p 0x0069F2B0
    */
   struct Plant {
       /**
        * @brief The ID.
+       *
        * @par Offset
-       * 0x0
+       * @p 0x0
        */
       std::int32_t id;
 
@@ -133,8 +136,9 @@ struct Slot {
 
       /**
        * @brief The image resource.
+       *
        * @par Offset
-       * 0x8
+       * @p 0x8
        */
       std::int32_t ui;
 
@@ -142,15 +146,17 @@ struct Slot {
 
       /**
        * @brief The cost to plant.
+       *
        * @par Offset
-       * 0x10
+       * @p 0x10
        */
       std::int32_t sun_cost;
 
       /**
        * @brief The recharge time.
+       *
        * @par Offset
-       * 0x14
+       * @p 0x14
        */
       std::int32_t recharge_time;
 
@@ -158,8 +164,9 @@ struct Slot {
 
       /**
        * @brief The name.
+       *
        * @par Offset
-       * 0x20
+       * @p 0x20
        */
       char* name;
   };
@@ -170,19 +177,18 @@ struct Slot {
 - **Planted plants in a level**
 
   ```c++
-  /**
-   * @brief The planted plant in a level.
-   */
+  //! The planted plant in a level.
   struct PlantedPlant
   {
       std::byte unknown1[321];
 
       /**
        * @brief If the plant is invalid.
+       *
        * @details If this field is @p true, the plant will be removed.
        *
        * @par Offset
-       * 0x141
+       * @p 0x141
        */
       bool invalid;
 
@@ -200,11 +206,11 @@ struct Slot {
   /**
    * @brief Start a level.
    *
-   * @param level_id  A level ID.
-   * @param reset     It's @p true when starting a new level, @p false when loading the last progress.
+   * @param level_id A level ID.
+   * @param reset It's @p true when starting a new level, @p false when loading the last progress.
    *
    * @par Binary Address
-   * 0x0044F560
+   * @p 0x0044F560
    */
   void StartLevel(
       std::int32_t level_id,
@@ -218,10 +224,10 @@ struct Slot {
    * @brief Terminate the level.
    *
    * @param level_env The level environment.
-   * @param unknown   It's always 0.
+   * @param unknown It's always @p 0.
    *
    * @par Binary Address
-   * 0x00413400
+   * @p 0x00413400
    */
   void EndLevel(
       void* level_env,
@@ -238,7 +244,7 @@ struct Slot {
    * @return @p true if the amount of sun is enough, otherwise @p false, stored in @p AL.
    *
    * @par Binary Address
-   * 0x0041BA60
+   * @p 0x0041BA60
    */
   bool SubtractSun(
       std::int32_t count);
@@ -292,13 +298,13 @@ struct Slot {
    * @brief Check if a plant can be planted in a certain location.
    *
    * @param level_env The level environment.
-   * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The Y coordinate of the target location, stored in @p EAX.
-   * @param plant_id  A plant ID.
-   * @return 0 if the plant can be planted, otherwise the error code, stored in @p EAX.
+   * @param pos_x The X coordinate of the target location.
+   * @param pos_y The Y coordinate of the target location, stored in @p EAX.
+   * @param plant_id A plant ID.
+   * @return @p 0 if the plant can be planted, otherwise the error code, stored in @p EAX.
    *
    * @par Binary Address
-   * 0x0040E020
+   * @p 0x0040E020
    */
   std::int32_t CanBePlanted(
       void* level_env,
@@ -314,14 +320,14 @@ struct Slot {
    * @brief Create a plant.
    *
    * @param level_env The level environment.
-   * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The Y coordinate of the target location, stored in @p EAX.
-   * @param plant_id  A plant ID.
-   * @param unknown   It's always -1.
+   * @param pos_x The X coordinate of the target location.
+   * @param pos_y The Y coordinate of the target location, stored in @p EAX.
+   * @param plant_id A plant ID.
+   * @param unknown It's always @p -1.
    * @return Unknown.
    *
    * @par Binary Address
-   * 0x0040D120
+   * @p 0x0040D120
    */
   std::int32_t CreatePlant(
       void* level_env,
@@ -340,7 +346,7 @@ struct Slot {
    * @param plant A plant.
    *
    * @par Binary Address
-   * 0x004679B0
+   * @p 0x004679B0
    */
   void RemovePlant(
       void* plant);
@@ -365,12 +371,12 @@ struct Slot {
    *
    * @param level_env The level environment, stored in @p ECX.
    * @param zombie_id A zombie ID.
-   * @param pos_x     The X coordinate of the target location.
-   * @param pos_y     The X coordinate of the target location, stored in @p EAX.
+   * @param pos_x The X coordinate of the target location.
+   * @param pos_y The X coordinate of the target location, stored in @p EAX.
    * @return Unknown.
    *
    * @par Binary Address
-   * 0x0042A0F0
+   * @p 0x0042A0F0
    */
   std::int32_t CreateZombie(
       void* level_env,

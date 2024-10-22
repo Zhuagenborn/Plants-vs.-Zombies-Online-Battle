@@ -48,7 +48,7 @@ inline constexpr std::size_t call_len{ jmp_len };
 /**
  * @brief Check if an address is @p nullptr.
  *
- * @param addr  An address.
+ * @param addr An address.
  *
  * @exception std::invalid_argument The address is @p nullptr.
  */
@@ -57,8 +57,8 @@ void CheckNullPointer(std::intptr_t addr);
 /**
  * @brief Make a part of memory writable.
  *
- * @param addr  A base address.
- * @param size  The size.
+ * @param addr A base address.
+ * @param size The size.
  *
  * @exception std::system_error The operation failed.
  */
@@ -67,9 +67,9 @@ void SetMemoryWritable(std::intptr_t addr, std::size_t size);
 /**
  * @brief Alter the memory content.
  *
- * @param addr          An address.
- * @param new_bytes     New bytes.
- * @param origin_bytes  A buffer for storing original bytes. It's optional.
+ * @param addr An address.
+ * @param new_bytes New bytes.
+ * @param origin_bytes A buffer for storing original bytes. It's optional.
  *
  * @exception std::length_error The buffer for original bytes is too small.
  */
@@ -79,8 +79,8 @@ void AlterMemory(std::intptr_t addr, std::span<const std::byte> new_bytes,
 /**
  * @brief Format a long @p jmp instruction.
  *
- * @param from  The source address.
- * @param to    The destination address.
+ * @param from The source address.
+ * @param to The destination address.
  * @return The machine code of the instruction.
  */
 std::array<std::byte, jmp_len> FormatJmpBytes(std::intptr_t from,
@@ -88,6 +88,7 @@ std::array<std::byte, jmp_len> FormatJmpBytes(std::intptr_t from,
 
 /**
  * @brief Get the true entry address of a function.
+ *
  * @details Some compilers will generate a <em>Jump Thunk</em> for each function, using @p & operator can only get the address of the thunk.
  */
 std::intptr_t GetFuncEntryAddr(std::intptr_t addr) noexcept;

@@ -25,10 +25,7 @@
 
 namespace net {
 
-/**
- * @interface IpAddr
- * @brief The interface of IP address.
- */
+//! The interface of IP address.
 class IpAddr {
 public:
     virtual ~IpAddr() noexcept = default;
@@ -43,9 +40,7 @@ public:
     virtual const sockaddr* Raw() const noexcept = 0;
 };
 
-/**
- * @brief The IPv4 address.
- */
+//! The IPv4 address.
 class Ipv4Addr final : public IpAddr {
 public:
     static constexpr int version{ AF_INET };
@@ -70,9 +65,7 @@ private:
     sockaddr_in addr_{};
 };
 
-/**
- * @brief The IPv6 address.
- */
+//! The IPv6 address.
 class Ipv6Addr final : public IpAddr {
 public:
     static constexpr int version{ AF_INET6 };
@@ -97,12 +90,6 @@ private:
     sockaddr_in6 addr_{};
 };
 
-/**
- * @concept ValidIpAddr
- * @brief A valid IP address.
- *
- * @tparam T    @p Ipv4Addr or @p Ipv6Addr.
- */
 template <typename T>
 concept ValidIpAddr =
     std::derived_from<T, IpAddr> && !std::same_as<T, IpAddr> && requires(T) {

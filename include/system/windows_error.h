@@ -19,18 +19,10 @@
 
 namespace sys {
 
-/**
- * Throw a @p std::system_error exception containing the Windows Sockets last-error.
- *
- * @warning This function does not return.
- */
+//! Throw a @p std::system_error exception containing the Windows Sockets last-error.
 [[noreturn]] void ThrowWsaLastError();
 
-/**
- * Throw a @p std::system_error exception containing the last-error.
- *
- * @warning This function does not return.
- */
+//! Throw a @p std::system_error exception containing the last-error.
 [[noreturn]] void ThrowLastError();
 
 }  // namespace sys
